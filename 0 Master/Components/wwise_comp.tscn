@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp801vpnd42ni"]
+
+[ext_resource type="WwiseBank" uid="uid://cuplnx8sintp" path="res://Wwise/resources/SoundBank/{B0ADC2FA-C946-4D08-BD3B-CFFB99FD659E}.tres" id="1_m0yak"]
+[ext_resource type="WwiseBank" uid="uid://cj715aqtqbkfu" path="res://Wwise/resources/SoundBank/{E3F7B312-AA72-49EF-AFC3-3862D3EE8376}.tres" id="1_r6h5a"]
+[ext_resource type="WwiseBank" uid="uid://md7442d5s6vk" path="res://Wwise/resources/SoundBank/{DE0937A7-6179-4F5D-931A-3FA4F6544824}.tres" id="2_b5kdy"]
+[ext_resource type="WwiseBank" uid="uid://dtphqm5lo5ccd" path="res://Wwise/resources/SoundBank/{7D658575-1706-481C-84F1-FD257A84B9AC}.tres" id="4_ihj5e"]
+[ext_resource type="WwiseBank" uid="uid://bo4q7fdc7cqee" path="res://Wwise/resources/SoundBank/{E22C4C2F-BA40-4A0F-9EB5-B93AB38E517F}.tres" id="5_hn6fj"]
+
+[node name="Wwise_comp" type="Node"]
+
+[node name="AkBank_BGM" type="AkBank" parent="."]
+bank = ExtResource("1_m0yak")
+load_on = 1
+
+[node name="AkBank_Enemies" type="AkBank" parent="."]
+bank = ExtResource("2_b5kdy")
+load_on = 1
+
+[node name="AkBank_Player" type="AkBank" parent="."]
+bank = ExtResource("1_r6h5a")
+load_on = 1
+
+[node name="AkBank_UI" type="AkBank" parent="."]
+bank = ExtResource("4_ihj5e")
+load_on = 1
+
+[node name="AkBank_World" type="AkBank" parent="."]
+bank = ExtResource("5_hn6fj")
+load_on = 1

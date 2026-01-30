@@ -1,0 +1,26 @@
+Event	ID	Name			Wwise Object Path	Notes
+	223084590	UI_Event			\Default Work Unit\UI_Event	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	3563481019	UI_SFX			\Default Work Unit\UI_SFX	
+
+Switch	ID	Name	Switch Group			Notes
+	318623688	UI_Popup	UI_SFX			
+	2519197294	UI_Close	UI_SFX			
+	2774129122	UI_Select	UI_SFX			
+	3083016892	UI_Cancel	UI_SFX			
+	3282376362	UI_Open	UI_SFX			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	152393248	Fantasy UI Vol (67)	.cache\50\{50DD5DDD-8D4D-58DC-6FC7-0DEB68B5C4B7}.wem		\Containers\Default Work Unit\UI_SFX\UI_Cancel\Fantasy UI Vol (67)		174940
+	179475237	Fantasy UI Vol (2)	.cache\BA\{BA1F01BE-61C7-3F9F-6824-65079A05AFA3}.wem		\Containers\Default Work Unit\UI_SFX\UI_Close\Fantasy UI Vol (2)		91456
+	230136633	Fantasy UI Vol (24)	.cache\5D\{5D673B96-61C1-B414-5E71-C002E2915990}.wem		\Containers\Default Work Unit\UI_SFX\UI_Popup\Fantasy UI Vol (24)		361964
+	462617115	Fantasy UI Vol (75)	.cache\18\{1821B884-930A-8851-76C2-06B9E3A17DF7}.wem		\Containers\Default Work Unit\UI_SFX\UI_Cancel\Fantasy UI Vol (75)		154072
+	548081545	Fantasy UI Vol (59)	.cache\5B\{5B8D2200-FF03-F145-A615-EBFC4D621AB1}.wem		\Containers\Default Work Unit\UI_SFX\UI_Select\Fantasy UI Vol (59)		436704
+	552927490	Fantasy UI Vol (60)	.cache\DF\{DFC5F475-8450-1871-AC63-DE03156DCB27}.wem		\Containers\Default Work Unit\UI_SFX\UI_Select\Fantasy UI Vol (60)		642720
+	606942896	Fantasy UI Vol (61)	.cache\5C\{5CCEF2A4-7052-56EF-2AC7-8BFF4D8732B6}.wem		\Containers\Default Work Unit\UI_SFX\UI_Select\Fantasy UI Vol (61)		458820
+	681138453	Fantasy UI Vol (22)	.cache\A1\{A148D963-1598-E8A5-20BC-990C240D51BA}.wem		\Containers\Default Work Unit\UI_SFX\UI_Open\Fantasy UI Vol (22)		486972
+	832932070	Fantasy UI Vol (1)	.cache\C3\{C3BEE052-D084-ADEA-58FF-32800A0E898D}.wem		\Containers\Default Work Unit\UI_SFX\UI_Close\Fantasy UI Vol (1)		87620
+	929882365	Fantasy UI Vol (14)	.cache\0A\{0A206481-7FAA-A4F4-CBB3-76A2C9DAD3FD}.wem		\Containers\Default Work Unit\UI_SFX\UI_Popup\Fantasy UI Vol (14)		547292
+	1027380937	Fantasy UI Vol (18)	.cache\A5\{A526E8C4-8B1B-13C7-BD4E-457FD4D8F999}.wem		\Containers\Default Work Unit\UI_SFX\UI_Open\Fantasy UI Vol (18)		556256
+

@@ -1,0 +1,7 @@
+[gd_resource type="WwiseBank" format=3 uid="uid://cj715aqtqbkfu"]
+
+[resource]
+name = "Events_Player"
+id = 1597557594
+guid = "{E3F7B312-AA72-49EF-AFC3-3862D3EE8376}"
+dummy = true

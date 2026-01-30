@@ -1,0 +1,16 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1799075776	BGM_Event			\Default Work Unit\BGM_Event	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1239043692	BGM_Switch			\Default Work Unit\BGM_Switch	
+
+Switch	ID	Name	Switch Group			Notes
+	3935703657	BGM_01	BGM_Switch			
+	3935703658	BGM_02	BGM_Switch			
+	3935703659	BGM_03	BGM_Switch			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	7250716	Cinderfall	.cache\89\{89BD44C1-9860-5779-FD3C-DBABFF75E2DD}.wem		\Containers\Default Work Unit\BGM_Tracks\Cinderfall\Cinderfall		26584724
+	676343859	Cinder and Rot	.cache\52\{520EEC50-1D72-E611-187F-CE8ADF4B3223}.wem		\Containers\Default Work Unit\BGM_Tracks\Cinder and Rot\Cinder and Rot		26584728
+	1004472616	Anathema	.cache\E1\{E1EA8316-1297-B835-F408-4982BA28FE82}.wem		\Containers\Default Work Unit\BGM_Tracks\Anathema\Anathema		25105984
+

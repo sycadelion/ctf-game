@@ -1,0 +1,7 @@
+[gd_resource type="WwiseBank" format=3 uid="uid://bo4q7fdc7cqee"]
+
+[resource]
+name = "Events_World"
+id = 1906124703
+guid = "{E22C4C2F-BA40-4A0F-9EB5-B93AB38E517F}"
+dummy = true

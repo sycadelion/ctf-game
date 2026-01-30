@@ -1,0 +1,26 @@
+Event	ID	Name			Wwise Object Path	Notes
+	190124326	SFX_World_Event			\Default Work Unit\SFX_World_Event	
+	3561112890	SFX_Ambient_Event			\Default Work Unit\SFX_Ambient_Event	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	2894110654	SFX_Ambient_Switch			\Default Work Unit\SFX_Ambient_Switch	
+	3015996730	SFX_World_Switch			\Default Work Unit\SFX_World_Switch	
+
+Switch	ID	Name	Switch Group			Notes
+	1014142962	Interior_Hum	SFX_Ambient_Switch			
+	1409504247	Static	SFX_World_Switch			
+	3929635500	Light_Hum	SFX_World_Switch			
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	4612929	Electromagnetic_Neon_Light_Loop_Mono_Elektrousi_03	.cache\5A\{5A8C5359-524F-22A7-6FDA-3B1F33ABB6D2}.wem		\Containers\Default Work Unit\SFX_World\SFX_Light_Hum\Electromagnetic_Neon_Light_Loop_Mono_Elektrousi_03		768266
+	229417736	Electromagnetic_Neon_Light_Loop_Mono_Elektrousi_01	.cache\FE\{FE948371-A5FF-CC58-D5FF-A9397CA0F328}.wem		\Containers\Default Work Unit\SFX_World\SFX_Light_Hum\Electromagnetic_Neon_Light_Loop_Mono_Elektrousi_01		960632
+	271616853	Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_04	.cache\34\{343E023B-1515-A869-74BD-1C30246E1E18}.wem		\Containers\Default Work Unit\SFX_World\SFX_Static\Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_04		920912
+	284284448	Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_02	.cache\8C\{8C20C57A-10F5-7C25-B5CD-9262AA4B3679}.wem		\Containers\Default Work Unit\SFX_World\SFX_Static\Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_02		959846
+	306861456	Electromagnetic_Neon_Light_Loop_Mono_Elektrousi_02	.cache\E4\{E451D416-C916-7CF7-A785-9785B07C8CC8}.wem		\Containers\Default Work Unit\SFX_World\SFX_Light_Hum\Electromagnetic_Neon_Light_Loop_Mono_Elektrousi_02		974600
+	608103220	Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_06	.cache\17\{173BF174-29A1-D895-742B-A3F681C570FA}.wem		\Containers\Default Work Unit\SFX_World\SFX_Static\Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_06		232154
+	652204431	Vehicle_Car_Drive_Interior_Loop_Stereo_03	.cache\BD\{BD53FAAA-2DB9-C2F9-20FE-5ADE0EFE093B}.wem		\Containers\Default Work Unit\SFX_Ambient\SFX_Interior_hum\Vehicle_Car_Drive_Interior_Loop_Stereo_03		1535732
+	906404774	Vehicle_Car_Drive_Interior_Loop_Stereo_01	.cache\2F\{2F2C03B9-9734-7D9D-DDCC-5989BF426848}.wem		\Containers\Default Work Unit\SFX_Ambient\SFX_Interior_hum\Vehicle_Car_Drive_Interior_Loop_Stereo_01		3419812
+	937607329	Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_03	.cache\DF\{DF7B6707-4A81-A71D-21FB-955853AD6E0C}.wem		\Containers\Default Work Unit\SFX_World\SFX_Static\Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_03		569202
+	940085064	Vehicle_Car_Drive_Interior_Loop_Stereo_04	.cache\7E\{7E7996EC-5454-602A-7387-BB69D0D44D5A}.wem		\Containers\Default Work Unit\SFX_Ambient\SFX_Interior_hum\Vehicle_Car_Drive_Interior_Loop_Stereo_04		1332120
+	995845414	Vehicle_Car_Drive_Interior_Loop_Stereo_02	.cache\BE\{BE978E86-8DDA-44D4-D745-1212C31642C1}.wem		\Containers\Default Work Unit\SFX_Ambient\SFX_Interior_hum\Vehicle_Car_Drive_Interior_Loop_Stereo_02		3215728
+

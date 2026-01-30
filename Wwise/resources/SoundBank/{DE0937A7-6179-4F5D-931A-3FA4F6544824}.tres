@@ -1,0 +1,7 @@
+[gd_resource type="WwiseBank" format=3 uid="uid://md7442d5s6vk"]
+
+[resource]
+name = "Events_Enemies"
+id = 3689319643
+guid = "{DE0937A7-6179-4F5D-931A-3FA4F6544824}"
+dummy = true

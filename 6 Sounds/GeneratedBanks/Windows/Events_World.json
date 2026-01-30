@@ -1,0 +1,232 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "1906124703",
+    "Type": "User",
+    "GUID": "{E22C4C2F-BA40-4A0F-9EB5-B93AB38E517F}",
+    "Language": "SFX",
+    "Hash": "{BAC3EE04-6C24-0B36-A22A-C2285A8F06EA}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Events_World",
+    "ShortName": "Events_World",
+    "Path": "Events_World.bnk",
+    "Media": [
+     {
+      "Id": "4612929",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Electromagnetic_Neon_Light_Loop_Mono_Elektrousi_03.wav",
+      "CachePath": "5A/{5A8C5359-524F-22A7-6FDA-3B1F33ABB6D2}.wem"
+     },
+     {
+      "Id": "229417736",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Electromagnetic_Neon_Light_Loop_Mono_Elektrousi_01.wav",
+      "CachePath": "FE/{FE948371-A5FF-CC58-D5FF-A9397CA0F328}.wem"
+     },
+     {
+      "Id": "271616853",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_04.wav",
+      "CachePath": "34/{343E023B-1515-A869-74BD-1C30246E1E18}.wem"
+     },
+     {
+      "Id": "284284448",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_02.wav",
+      "CachePath": "8C/{8C20C57A-10F5-7C25-B5CD-9262AA4B3679}.wem"
+     },
+     {
+      "Id": "306861456",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Electromagnetic_Neon_Light_Loop_Mono_Elektrousi_02.wav",
+      "CachePath": "E4/{E451D416-C916-7CF7-A785-9785B07C8CC8}.wem"
+     },
+     {
+      "Id": "608103220",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_06.wav",
+      "CachePath": "17/{173BF174-29A1-D895-742B-A3F681C570FA}.wem"
+     },
+     {
+      "Id": "652204431",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Vehicle_Car_Drive_Interior_Loop_Stereo_03.wav",
+      "CachePath": "BD/{BD53FAAA-2DB9-C2F9-20FE-5ADE0EFE093B}.wem"
+     },
+     {
+      "Id": "906404774",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Vehicle_Car_Drive_Interior_Loop_Stereo_01.wav",
+      "CachePath": "2F/{2F2C03B9-9734-7D9D-DDCC-5989BF426848}.wem"
+     },
+     {
+      "Id": "937607329",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Electromagnetic_Computer_Idle_Loop_Mono_Elektrousi_03.wav",
+      "CachePath": "DF/{DF7B6707-4A81-A71D-21FB-955853AD6E0C}.wem"
+     },
+     {
+      "Id": "940085064",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Vehicle_Car_Drive_Interior_Loop_Stereo_04.wav",
+      "CachePath": "7E/{7E7996EC-5454-602A-7387-BB69D0D44D5A}.wem"
+     },
+     {
+      "Id": "995845414",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Vehicle_Car_Drive_Interior_Loop_Stereo_02.wav",
+      "CachePath": "BE/{BE978E86-8DDA-44D4-D745-1212C31642C1}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3561112890",
+      "Name": "SFX_Ambient_Event",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_Ambient_Event",
+      "GUID": "{24C65965-7FFF-4B22-AFDF-ECADABBA1173}",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "2894110654",
+         "Id": "1014142962",
+         "GUID": "{A023083B-F37D-4BD4-97F1-DD1DED7C5931}",
+         "Default": "true"
+        },
+        "MediaRefs": [
+         {
+          "Id": "652204431"
+         },
+         {
+          "Id": "906404774"
+         },
+         {
+          "Id": "940085064"
+         },
+         {
+          "Id": "995845414"
+         }
+        ]
+       }
+      ]
+     },
+     {
+      "Id": "190124326",
+      "Name": "SFX_World_Event",
+      "ObjectPath": "\\Events\\Default Work Unit\\SFX_World_Event",
+      "GUID": "{BAB833E5-821D-4511-B4CB-847C5F1E510A}",
+      "DurationType": "Infinite",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3015996730",
+         "Id": "1409504247",
+         "GUID": "{4C64C679-8720-4D17-995F-29615DEF8C4A}",
+         "Default": "true"
+        },
+        "MediaRefs": [
+         {
+          "Id": "271616853"
+         },
+         {
+          "Id": "284284448"
+         },
+         {
+          "Id": "608103220"
+         },
+         {
+          "Id": "937607329"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3015996730",
+         "Id": "3929635500",
+         "GUID": "{D154BEE8-6E1C-430B-99AA-AC83B51DB871}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "4612929"
+         },
+         {
+          "Id": "229417736"
+         },
+         {
+          "Id": "306861456"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "2894110654",
+      "Name": "SFX_Ambient_Switch",
+      "ObjectPath": "\\Switches\\Default Work Unit\\SFX_Ambient_Switch",
+      "GUID": "{0C1511A1-8F2D-4D52-B8E7-8F1352C451FE}",
+      "Switches": [
+       {
+        "Id": "1014142962",
+        "Name": "Interior_Hum",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SFX_Ambient_Switch\\Interior_Hum",
+        "GUID": "{A023083B-F37D-4BD4-97F1-DD1DED7C5931}"
+       }
+      ]
+     },
+     {
+      "Id": "3015996730",
+      "Name": "SFX_World_Switch",
+      "ObjectPath": "\\Switches\\Default Work Unit\\SFX_World_Switch",
+      "GUID": "{492EDA54-B8E9-462E-AAD8-B08941608693}",
+      "Switches": [
+       {
+        "Id": "1409504247",
+        "Name": "Static",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SFX_World_Switch\\Static",
+        "GUID": "{4C64C679-8720-4D17-995F-29615DEF8C4A}"
+       },
+       {
+        "Id": "3929635500",
+        "Name": "Light_Hum",
+        "ObjectPath": "\\Switches\\Default Work Unit\\SFX_World_Switch\\Light_Hum",
+        "GUID": "{D154BEE8-6E1C-430B-99AA-AC83B51DB871}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{4872573A-D047-0D79-7A49-D2049CDB582C}"
+ }
+}

@@ -1,0 +1,145 @@
+[gd_scene load_steps=6 format=3 uid="uid://cytpx1o8jjkf5"]
+
+[ext_resource type="Script" uid="uid://bfumh07ggg2nw" path="res://4 Levels/lobby/lobby.gd" id="1_blh0a"]
+[ext_resource type="PackedScene" uid="uid://d4c4t5rcpje0f" path="res://3 GUI/lobby/player_listing.tscn" id="2_d13f8"]
+[ext_resource type="PackedScene" uid="uid://rtkbreq36ec7" path="res://0 Master/Components/server_component.tscn" id="2_oy1th"]
+[ext_resource type="PackedScene" uid="uid://di3h3kyl8ha7e" path="res://4 Levels/Level_1/Level_1.tscn" id="4_q85h7"]
+[ext_resource type="PackedScene" uid="uid://x1r8ecntl0ql" path="res://4 Levels/Level_2/level_2.tscn" id="5_rf8bh"]
+
+[node name="Lobby" type="Node"]
+script = ExtResource("1_blh0a")
+server_compo = ExtResource("2_oy1th")
+lobby_member_listing = ExtResource("2_d13f8")
+levels_array = Array[PackedScene]([ExtResource("4_q85h7"), ExtResource("5_rf8bh")])
+
+[node name="Lobby_ui" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Control" parent="Lobby_ui"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Lobby_ui/Title"]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 23.0
+text = "LOBBY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lobby_members" type="Control" parent="Lobby_ui"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Lobby_ui/Lobby_members"]
+custom_minimum_size = Vector2(50, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -150.0
+offset_right = 25.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Lobby_ui/Lobby_members/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Lobby_ui/Lobby_members/PanelContainer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="member_list_container" type="VBoxContainer" parent="Lobby_ui/Lobby_members/PanelContainer/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Level_select" type="Control" parent="Lobby_ui"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Lobby_ui/Level_select"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Lobby_ui/Level_select/PanelContainer"]
+layout_mode = 2
+
+[node name="Level_options" type="OptionButton" parent="Lobby_ui/Level_select/PanelContainer/MarginContainer"]
+layout_mode = 2
+disabled = true
+selected = 0
+item_count = 2
+popup/item_0/text = "Drugland"
+popup/item_0/id = 0
+popup/item_1/text = "Canada"
+popup/item_1/id = 1
+
+[node name="Buttons" type="Control" parent="Lobby_ui"]
+visible = false
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Lobby_ui/Buttons"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Lobby_ui/Buttons/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="start_Button" type="Button" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Level_container" type="Node" parent="."]
+
+[connection signal="item_selected" from="Lobby_ui/Level_select/PanelContainer/MarginContainer/Level_options" to="." method="_on_level_options_item_selected"]
+[connection signal="pressed" from="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/start_Button" to="." method="_on_start_button_pressed"]

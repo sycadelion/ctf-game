@@ -1,0 +1,106 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "3689319643",
+    "Type": "User",
+    "GUID": "{DE0937A7-6179-4F5D-931A-3FA4F6544824}",
+    "Language": "SFX",
+    "Hash": "{61E388B4-AF5C-21A6-1291-F5EF0FEB2521}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Events_Enemies",
+    "ShortName": "Events_Enemies",
+    "Path": "Events_Enemies.bnk",
+    "Media": [
+     {
+      "Id": "263715107",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Doll_Itadakimasu.wav",
+      "CachePath": "77/{7774CA78-4D12-A0DC-DB02-70D68AB11D63}.wem"
+     },
+     {
+      "Id": "293167582",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Doll_HideAndSeekAreYouReady.wav",
+      "CachePath": "76/{76C505F9-EDA8-C785-9B8E-88397BDCBC27}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "386857866",
+       "Name": "Time Stretch (Custom)",
+       "ObjectPath": "\\Containers\\Default Work Unit\\Doll\\[Effect Slot [0]: (Time Stretch)]\\Time Stretch (Custom)",
+       "GUID": "{5DAFB6C0-AEEC-4587-9B13-737A7D079F0E}",
+       "LibName": "Wwise Time Stretch",
+       "LibId": "8519683"
+      },
+      {
+       "Id": "518017474",
+       "Name": "Matrix Reverb (Custom)",
+       "ObjectPath": "\\Containers\\Default Work Unit\\Doll\\[Effect Slot [2]: (Matrix Reverb)]\\Matrix Reverb (Custom)",
+       "GUID": "{3AE2EC9D-EF86-404D-88EA-123A06335C47}",
+       "LibName": "Wwise Matrix Reverb",
+       "LibId": "7536643"
+      },
+      {
+       "Id": "1018472585",
+       "Name": "Guitar Distortion (Custom)",
+       "ObjectPath": "\\Containers\\Default Work Unit\\Doll\\[Effect Slot [1]: (Guitar Distortion)]\\Guitar Distortion (Custom)",
+       "GUID": "{98817FBF-C319-43B0-8208-0D94624F0E85}",
+       "LibName": "Wwise Guitar Distortion",
+       "LibId": "8257539"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "374202415",
+      "Name": "Doll_event",
+      "ObjectPath": "\\Events\\Default Work Unit\\Doll_event",
+      "GUID": "{C70936A3-D698-4FBB-A2D7-3FB539861C77}",
+      "MaxAttenuation": "20",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "263715107"
+       },
+       {
+        "Id": "293167582"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "386857866"
+        },
+        {
+         "Id": "518017474"
+        },
+        {
+         "Id": "1018472585"
+        }
+       ]
+      }
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "1111219968",
+      "Name": "Time_stretch",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Time_stretch",
+      "GUID": "{4BEB5EEE-540B-4916-9FFA-71E6A1A9CDCA}"
+     }
+    ]
+   }
+  ],
+  "FileHash": "{B1CD85A6-AEB3-BDCF-8BC6-D80FAF981072}"
+ }
+}

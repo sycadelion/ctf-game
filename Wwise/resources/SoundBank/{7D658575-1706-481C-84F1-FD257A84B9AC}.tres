@@ -1,0 +1,7 @@
+[gd_resource type="WwiseBank" format=3 uid="uid://dtphqm5lo5ccd"]
+
+[resource]
+name = "Events_UI"
+id = 32930471
+guid = "{7D658575-1706-481C-84F1-FD257A84B9AC}"
+dummy = true

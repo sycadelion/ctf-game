@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://lnve4gib6g85"]
+
+[ext_resource type="Script" uid="uid://dqmywaxnsw4ta" path="res://0 Master/Autoloads/Scene_Loader.gd" id="1_15tna"]
+[ext_resource type="PackedScene" uid="uid://cp801vpnd42ni" path="res://0 Master/Components/wwise_comp.tscn" id="2_1loxj"]
+[ext_resource type="PackedScene" uid="uid://cyjl1qgy0o2bg" path="res://3 GUI/Menus/Main Menu/main_menu.tscn" id="2_5fx1p"]
+
+[node name="SceneLoader" type="Node"]
+script = ExtResource("1_15tna")
+Wwise_comp = ExtResource("2_1loxj")
+Default_Scene = ExtResource("2_5fx1p")
+
+[node name="Component Container" type="Node" parent="."]
+
+[node name="Scene" type="Node" parent="."]
+
+[node name="Player Container" type="Node" parent="."]
+
+[node name="Effect Container" type="Node" parent="."]
+
+[node name="UI Container" type="Node" parent="."]

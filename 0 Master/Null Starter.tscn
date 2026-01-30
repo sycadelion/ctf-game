@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sv8nqjqu7a63"]
+
+[ext_resource type="Script" uid="uid://wkbwtl2c14co" path="res://0 Master/null_starter.gd" id="1_cslx3"]
+
+[node name="NullStarter" type="Node"]
+script = ExtResource("1_cslx3")

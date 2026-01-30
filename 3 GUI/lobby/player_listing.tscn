@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4c4t5rcpje0f"]
+
+[ext_resource type="Script" uid="uid://bgl3swtl7avaq" path="res://3 GUI/lobby/player_listing.gd" id="1_77vcm"]
+[ext_resource type="Texture2D" uid="uid://bd370wrbfwsue" path="res://7 Assets/Icons/Missing_avatar.png" id="2_a6wpr"]
+
+[node name="Player_listing" type="Control"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_77vcm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+offset_right = 121.0
+offset_bottom = 23.0
+
+[node name="Avatar" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_a6wpr")
+stretch_mode = 2
+
+[node name="Username" type="RichTextLabel" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Test Username"

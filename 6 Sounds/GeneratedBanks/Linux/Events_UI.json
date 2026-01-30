@@ -1,0 +1,247 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "32930471",
+    "Type": "User",
+    "GUID": "{7D658575-1706-481C-84F1-FD257A84B9AC}",
+    "Language": "SFX",
+    "Hash": "{89B10FD2-91A7-1C4F-8C35-713FD8361DDB}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Events_UI",
+    "ShortName": "Events_UI",
+    "Path": "Events_UI.bnk",
+    "Media": [
+     {
+      "Id": "152393248",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (67).wav",
+      "CachePath": "50/{50DD5DDD-8D4D-58DC-6FC7-0DEB68B5C4B7}.wem"
+     },
+     {
+      "Id": "179475237",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (2).wav",
+      "CachePath": "BA/{BA1F01BE-61C7-3F9F-6824-65079A05AFA3}.wem"
+     },
+     {
+      "Id": "230136633",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (24).wav",
+      "CachePath": "5D/{5D673B96-61C1-B414-5E71-C002E2915990}.wem"
+     },
+     {
+      "Id": "462617115",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (75).wav",
+      "CachePath": "18/{1821B884-930A-8851-76C2-06B9E3A17DF7}.wem"
+     },
+     {
+      "Id": "548081545",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (59).wav",
+      "CachePath": "5B/{5B8D2200-FF03-F145-A615-EBFC4D621AB1}.wem"
+     },
+     {
+      "Id": "552927490",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (60).wav",
+      "CachePath": "DF/{DFC5F475-8450-1871-AC63-DE03156DCB27}.wem"
+     },
+     {
+      "Id": "606942896",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (61).wav",
+      "CachePath": "5C/{5CCEF2A4-7052-56EF-2AC7-8BFF4D8732B6}.wem"
+     },
+     {
+      "Id": "681138453",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (22).wav",
+      "CachePath": "A1/{A148D963-1598-E8A5-20BC-990C240D51BA}.wem"
+     },
+     {
+      "Id": "832932070",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (1).wav",
+      "CachePath": "C3/{C3BEE052-D084-ADEA-58FF-32800A0E898D}.wem"
+     },
+     {
+      "Id": "929882365",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (14).wav",
+      "CachePath": "0A/{0A206481-7FAA-A4F4-CBB3-76A2C9DAD3FD}.wem"
+     },
+     {
+      "Id": "1027380937",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Fantasy UI Vol (18).wav",
+      "CachePath": "A5/{A526E8C4-8B1B-13C7-BD4E-457FD4D8F999}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "223084590",
+      "Name": "UI_Event",
+      "ObjectPath": "\\Events\\Default Work Unit\\UI_Event",
+      "GUID": "{D11A8003-C879-4747-9413-C1676B69DB02}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.4961678",
+      "DurationMax": "3.6429932",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3563481019",
+         "Id": "2519197294",
+         "GUID": "{A794BB1A-1DBF-4AD4-8863-0D237F2CCE17}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "179475237"
+         },
+         {
+          "Id": "832932070"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3563481019",
+         "Id": "3083016892",
+         "GUID": "{65572C3D-3203-4143-B025-D2DFC537740A}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "152393248"
+         },
+         {
+          "Id": "462617115"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3563481019",
+         "Id": "3282376362",
+         "GUID": "{9CCE869C-586B-40F7-AD37-EB7040AF57B4}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "681138453"
+         },
+         {
+          "Id": "1027380937"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3563481019",
+         "Id": "318623688",
+         "GUID": "{E49BFBBC-1F01-42FF-9C92-EB22BB011EAE}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "230136633"
+         },
+         {
+          "Id": "929882365"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3563481019",
+         "Id": "2774129122",
+         "GUID": "{7EBDD1E8-6D8A-486D-B1F3-050C802B5D34}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "548081545"
+         },
+         {
+          "Id": "552927490"
+         },
+         {
+          "Id": "606942896"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "3563481019",
+      "Name": "UI_SFX",
+      "ObjectPath": "\\Switches\\Default Work Unit\\UI_SFX",
+      "GUID": "{1F9EE32B-FF76-4E8E-8F6E-646899A2619E}",
+      "Switches": [
+       {
+        "Id": "318623688",
+        "Name": "UI_Popup",
+        "ObjectPath": "\\Switches\\Default Work Unit\\UI_SFX\\UI_Popup",
+        "GUID": "{E49BFBBC-1F01-42FF-9C92-EB22BB011EAE}"
+       },
+       {
+        "Id": "2519197294",
+        "Name": "UI_Close",
+        "ObjectPath": "\\Switches\\Default Work Unit\\UI_SFX\\UI_Close",
+        "GUID": "{A794BB1A-1DBF-4AD4-8863-0D237F2CCE17}"
+       },
+       {
+        "Id": "2774129122",
+        "Name": "UI_Select",
+        "ObjectPath": "\\Switches\\Default Work Unit\\UI_SFX\\UI_Select",
+        "GUID": "{7EBDD1E8-6D8A-486D-B1F3-050C802B5D34}"
+       },
+       {
+        "Id": "3083016892",
+        "Name": "UI_Cancel",
+        "ObjectPath": "\\Switches\\Default Work Unit\\UI_SFX\\UI_Cancel",
+        "GUID": "{65572C3D-3203-4143-B025-D2DFC537740A}"
+       },
+       {
+        "Id": "3282376362",
+        "Name": "UI_Open",
+        "ObjectPath": "\\Switches\\Default Work Unit\\UI_SFX\\UI_Open",
+        "GUID": "{9CCE869C-586B-40F7-AD37-EB7040AF57B4}"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{7DBA123D-3A16-0670-86F1-8F73150E3A23}"
+ }
+}

@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://x1r8ecntl0ql"]
+
+[ext_resource type="Script" uid="uid://cr18bf34iqtc6" path="res://4 Levels/Level_2/level_2.gd" id="1_655gt"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_655gt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 500.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.471317, 0.7005661, 0.25370845, 1)
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+text = "back to lobby"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cyjl1qgy0o2bg"]
+
+[ext_resource type="Script" uid="uid://ckwdggqci14cw" path="res://3 GUI/Menus/Main Menu/main_menu.gd" id="1_bk81q"]
+[ext_resource type="PackedScene" uid="uid://b40ajquawp0uq" path="res://1 Player/player.tscn" id="2_17uuy"]
+[ext_resource type="PackedScene" uid="uid://d4c4t5rcpje0f" path="res://3 GUI/lobby/player_listing.tscn" id="3_2scwi"]
+[ext_resource type="PackedScene" uid="uid://cytpx1o8jjkf5" path="res://4 Levels/lobby/lobby.tscn" id="4_47c05"]
+[ext_resource type="PackedScene" uid="uid://biq0opb437m0n" path="res://3 GUI/Menus/host/host_menu.tscn" id="4_au660"]
+[ext_resource type="PackedScene" uid="uid://q0mbi02cveqg" path="res://3 GUI/Menus/play menu/play_menu.tscn" id="5_8bars"]
+
+[node name="Main Menu" type="CanvasLayer"]
+script = ExtResource("1_bk81q")
+player_scene = ExtResource("2_17uuy")
+player_card = ExtResource("3_2scwi")
+lobby_scene = ExtResource("4_47c05")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.029761024, 0.21431527, 0.23369795, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_right = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menus" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Host_menu" parent="VBoxContainer/Menus" instance=ExtResource("4_au660")]
+visible = false
+layout_mode = 1
+
+[node name="Play_menu" parent="VBoxContainer/Menus" instance=ExtResource("5_8bars")]
+layout_mode = 1
