@@ -6,6 +6,9 @@ signal back_to_lobby
 @export var lobby_member_listing: PackedScene
 @export var levels_array: Array[PackedScene] = []
 
+var players_ready: Array[int] = []
+var is_ready: bool = false
+
 @onready var lobby_ui: CanvasLayer = $Lobby_ui
 @onready var level_options: OptionButton = $Lobby_ui/Level_select/PanelContainer/MarginContainer/Level_options
 @onready var buttons: Control = $Lobby_ui/Buttons
@@ -20,12 +23,12 @@ func _ready() -> void:
 	if Networking.is_host:
 		back_to_lobby.connect(_on_lobby_return_signal)
 		level_options.disabled = false
-		buttons.show()
 		SceneLoad.Load_Component(server_compo)
 
 @rpc("authority","call_local")
-func spawn_lobby_member_listing(friend: Dictionary):
+func spawn_lobby_member_listing(friend: Dictionary, this_id: int):
 	var member_listing_scene = lobby_member_listing.instantiate()
+	member_listing_scene.name = str(this_id)
 	member_listing_scene.setup_listing(friend.steam_name,friend.steam_id)
 	%member_list_container.add_child(member_listing_scene)
 
@@ -72,3 +75,34 @@ func return_to_lobby():
 	for i in level_container.get_children():
 		level_container.remove_child(i)
 		i.queue_free()
+
+func notify_ready():
+	if not is_ready:
+		is_ready = true
+		set_player_ready.rpc(multiplayer.get_unique_id())
+	elif  is_ready:
+		is_ready = false
+		set_player_unready.rpc(multiplayer.get_unique_id())
+
+@rpc("any_peer", "call_local")
+func set_player_ready(id: int):
+	if not id in players_ready:
+		players_ready.append(id)
+		%member_list_container.get_node(str(id)).change_color()
+		
+		if multiplayer.is_server():
+			check_all_players_ready()
+
+@rpc("any_peer", "call_local")
+func set_player_unready(id: int):
+	if id in players_ready:
+		players_ready.erase(id)
+		%member_list_container.get_node(str(id)).change_color()
+		if multiplayer.is_server():
+			check_all_players_ready()
+
+func check_all_players_ready():
+	if players_ready.size() == multiplayer.get_peers().size()+1:
+		%start_Button.disabled = false
+	else:
+		%start_Button.disabled = true

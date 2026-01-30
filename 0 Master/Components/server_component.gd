@@ -1,6 +1,6 @@
 class_name server_comp extends Node
 const BLANK_PLAYER = {"steam_name": "", "steam_id": 0}
-var player_count: int
+var player_ids: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,10 +8,10 @@ func _ready() -> void:
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	if Networking.current_online_mode == Networking.online_mode.STEAM:
-		Global.lobby.spawn_lobby_member_listing.rpc(Networking.lobby_members[0])
+		Global.lobby.spawn_lobby_member_listing.rpc(Networking.lobby_members[0],multiplayer.get_unique_id())
 	elif Networking.current_online_mode == Networking.online_mode.ENET:
-		player_count += 1
-		Global.lobby.spawn_lobby_member_listing.rpc(BLANK_PLAYER)
+		player_ids.append(multiplayer.get_unique_id())
+		Global.lobby.spawn_lobby_member_listing.rpc(BLANK_PLAYER,multiplayer.get_unique_id())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,14 +20,14 @@ func _process(delta: float) -> void:
 
 func _on_player_connected(id: int):
 	Global.lobby.clear_lobby_member_listing.rpc()
-	player_count += 1
+	player_ids.append(id)
 	if Networking.current_online_mode == Networking.online_mode.STEAM:
 		Networking.get_lobby_members()
 		for i in Networking.lobby_members:
-			Global.lobby.spawn_lobby_member_listing.rpc(i)
+			Global.lobby.spawn_lobby_member_listing.rpc(i,id)
 	elif Networking.current_online_mode == Networking.online_mode.ENET:
-		for i in player_count:
-			Global.lobby.spawn_lobby_member_listing.rpc(BLANK_PLAYER)
+		for i in player_ids:
+			Global.lobby.spawn_lobby_member_listing.rpc(BLANK_PLAYER,i)
 
 func _on_player_disconnected(id: int):
 	pass

@@ -102,7 +102,6 @@ popup/item_1/text = "Canada"
 popup/item_1/id = 1
 
 [node name="Buttons" type="Control" parent="Lobby_ui"]
-visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -133,13 +132,25 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="start_Button" type="Button" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer"]
+[node name="ready_button" type="Button" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
+text = "Ready"
+
+[node name="Control" type="Control" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="start_Button" type="Button" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
 text = "Start"
 
 [node name="Level_container" type="Node" parent="."]
 
 [connection signal="item_selected" from="Lobby_ui/Level_select/PanelContainer/MarginContainer/Level_options" to="." method="_on_level_options_item_selected"]
+[connection signal="pressed" from="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/ready_button" to="." method="notify_ready"]
 [connection signal="pressed" from="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/start_Button" to="." method="_on_start_button_pressed"]
