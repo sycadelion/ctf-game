@@ -77,30 +77,6 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Level_select" type="Control" parent="Lobby_ui"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PanelContainer" type="PanelContainer" parent="Lobby_ui/Level_select"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Lobby_ui/Level_select/PanelContainer"]
-layout_mode = 2
-
-[node name="Level_options" type="OptionButton" parent="Lobby_ui/Level_select/PanelContainer/MarginContainer"]
-layout_mode = 2
-disabled = true
-selected = 0
-item_count = 2
-popup/item_0/text = "Drugland"
-popup/item_0/id = 0
-popup/item_1/text = "Canada"
-popup/item_1/id = 1
-
 [node name="Buttons" type="Control" parent="Lobby_ui"]
 layout_mode = 3
 anchors_preset = 7
@@ -149,8 +125,92 @@ layout_mode = 2
 disabled = true
 text = "Start"
 
+[node name="Match_settings" type="Control" parent="Lobby_ui"]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Lobby_ui/Match_settings"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -55.5
+offset_right = 239.0
+offset_bottom = 55.5
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Lobby_ui/Match_settings/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Match Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="GridContainer" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+columns = 2
+
+[node name="LevelLabel" type="Label" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Level:"
+
+[node name="Level_options" type="OptionButton" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+selected = 0
+item_count = 2
+popup/item_0/text = "Drugland"
+popup/item_0/id = 0
+popup/item_1/text = "Canada"
+popup/item_1/id = 1
+
+[node name="match_timeLabel" type="Label" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Match Time: "
+
+[node name="matchtimeEdit" type="LineEdit" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "15"
+alignment = 1
+editable = false
+
+[node name="respawnLabel" type="Label" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Respawn Time: "
+
+[node name="respawnEdit" type="LineEdit" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "5"
+alignment = 1
+editable = false
+
 [node name="Level_container" type="Node" parent="."]
 
-[connection signal="item_selected" from="Lobby_ui/Level_select/PanelContainer/MarginContainer/Level_options" to="." method="_on_level_options_item_selected"]
 [connection signal="pressed" from="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/ready_button" to="." method="notify_ready"]
 [connection signal="pressed" from="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="item_selected" from="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Level_options" to="." method="_on_level_options_item_selected"]
+[connection signal="text_changed" from="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/matchtimeEdit" to="." method="_on_matchtime_edit_text_changed"]
+[connection signal="text_changed" from="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/respawnEdit" to="." method="_on_respawn_edit_text_changed"]

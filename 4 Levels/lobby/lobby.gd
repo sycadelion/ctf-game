@@ -10,9 +10,11 @@ var players_ready: Array[int] = []
 var is_ready: bool = false
 
 @onready var lobby_ui: CanvasLayer = $Lobby_ui
-@onready var level_options: OptionButton = $Lobby_ui/Level_select/PanelContainer/MarginContainer/Level_options
+@onready var level_options: OptionButton = %Level_options
 @onready var buttons: Control = $Lobby_ui/Buttons
 @onready var start_button: Button = $Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/start_Button
+@onready var matchtime_edit: LineEdit = %matchtimeEdit
+@onready var respawn_edit: LineEdit = %respawnEdit
 @onready var level_container: Node = $Level_container
 
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +25,8 @@ func _ready() -> void:
 	if Networking.is_host:
 		back_to_lobby.connect(_on_lobby_return_signal)
 		level_options.disabled = false
+		matchtime_edit.editable = true
+		respawn_edit.editable = true
 		SceneLoad.Load_Component(server_compo)
 
 @rpc("authority","call_local")
@@ -52,6 +56,21 @@ func _on_level_options_item_selected(this_index: int) -> void:
 @rpc("authority","call_local")
 func update_level_select(this_index: int):
 	level_options.selected = this_index
+
+func _on_matchtime_edit_text_changed(new_text: String) -> void:
+	_update_matchtime.rpc(new_text)
+
+@rpc("authority","call_remote")
+func _update_matchtime(this_string:String):
+	matchtime_edit.text = this_string
+
+func _on_respawn_edit_text_changed(new_text: String) -> void:
+	_update_respawntime.rpc(new_text)
+
+@rpc("authority","call_remote")
+func _update_respawntime(this_string:String):
+	respawn_edit.text = this_string
+
 
 @rpc("authority","call_local")
 func change_level():
