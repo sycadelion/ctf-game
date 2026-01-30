@@ -21,7 +21,6 @@ func setup_listing(this_name: String, id: int):
 		%Avatar.texture = Steamworks.get_avatar_image(player_id)
 
 func change_color():
-	print(str(is_ready))
 	if is_ready:
 		%Username.add_theme_color_override("default_color",Color.WHITE)
 		is_ready = false

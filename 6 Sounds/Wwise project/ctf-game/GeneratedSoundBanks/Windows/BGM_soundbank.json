@@ -1,0 +1,47 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "4165272615",
+    "Type": "User",
+    "GUID": "{6D6A92D2-33E1-4EE6-8E87-21326118A21F}",
+    "Language": "SFX",
+    "Hash": "{ACBFDAE5-7A5F-1929-F1F7-AC6196502153}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\BGM_soundbank",
+    "ShortName": "BGM_soundbank",
+    "Path": "BGM_soundbank.bnk",
+    "Media": [
+     {
+      "Id": "65707738",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Go Down.wav",
+      "CachePath": "57/{571F1015-2E82-6B5F-B12F-ECFB5FB2E7EB}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "1799075776",
+      "Name": "bgm_event",
+      "ObjectPath": "\\Events\\Default Work Unit\\bgm_event",
+      "GUID": "{0CD1E712-9800-4379-BC5C-9784E7B7878E}",
+      "DurationType": "OneShot",
+      "DurationMin": "85.35551",
+      "DurationMax": "85.35551",
+      "MediaRefs": [
+       {
+        "Id": "65707738"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{5A842820-C266-114A-B0BB-ECC29700C526}"
+ }
+}

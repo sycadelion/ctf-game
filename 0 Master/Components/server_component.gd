@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_player_connected(id: int):
@@ -29,7 +29,7 @@ func _on_player_connected(id: int):
 		for i in player_ids:
 			Global.lobby.spawn_lobby_member_listing.rpc(BLANK_PLAYER,i)
 
-func _on_player_disconnected(id: int):
+func _on_player_disconnected(_id: int):
 	pass
 
 func _exit_tree() -> void:

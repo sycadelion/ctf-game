@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2B1151CA-5D94-472C-8F52-D57BD4B81BB9}" SchemaVersion="133">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{2B1151CA-5D94-472C-8F52-D57BD4B81BB9}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="bgm_event" ID="{0CD1E712-9800-4379-BC5C-9784E7B7878E}">
+					<ChildrenList>
+						<Action Name="" ID="{12D113B3-BEA2-4E3C-B883-9615C462BA12}" ShortID="473262894">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="BGM" ID="{C5668177-6D8D-4A67-AC48-61FC4DCFCFB2}" WorkUnitID="{D2FEEEB7-FD41-4465-89AA-4F94E6620CF8}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

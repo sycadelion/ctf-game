@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
+	<SoundBanks>
+		<SoundBank Id="4165272615" Type="User" GUID="{6D6A92D2-33E1-4EE6-8E87-21326118A21F}" Language="SFX" Hash="{ACBFDAE5-7A5F-1929-F1F7-AC6196502153}">
+			<ObjectPath>\SoundBanks\Default Work Unit\BGM_soundbank</ObjectPath>
+			<ShortName>BGM_soundbank</ShortName>
+			<Path>BGM_soundbank.bnk</Path>
+			<Media>
+				<File Id="65707738" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Go Down.wav</ShortName>
+					<CachePath>57/{571F1015-2E82-6B5F-B12F-ECFB5FB2E7EB}.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1799075776" Name="bgm_event" ObjectPath="\Events\Default Work Unit\bgm_event" GUID="{0CD1E712-9800-4379-BC5C-9784E7B7878E}" DurationType="OneShot" DurationMin="85.35551" DurationMax="85.35551">
+					<MediaRefs>
+						<MediaRef Id="65707738"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{296E6A41-BD4A-A1C7-18A1-E71F65AD5A22}</FileHash>
+</SoundBanksInfo>

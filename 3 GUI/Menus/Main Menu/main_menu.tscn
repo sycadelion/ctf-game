@@ -1,17 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyjl1qgy0o2bg"]
+[gd_scene load_steps=5 format=3 uid="uid://cyjl1qgy0o2bg"]
 
 [ext_resource type="Script" uid="uid://ckwdggqci14cw" path="res://3 GUI/Menus/Main Menu/main_menu.gd" id="1_bk81q"]
-[ext_resource type="PackedScene" uid="uid://b40ajquawp0uq" path="res://1 Player/player.tscn" id="2_17uuy"]
-[ext_resource type="PackedScene" uid="uid://d4c4t5rcpje0f" path="res://3 GUI/lobby/player_listing.tscn" id="3_2scwi"]
 [ext_resource type="PackedScene" uid="uid://cytpx1o8jjkf5" path="res://4 Levels/lobby/lobby.tscn" id="4_47c05"]
 [ext_resource type="PackedScene" uid="uid://biq0opb437m0n" path="res://3 GUI/Menus/host/host_menu.tscn" id="4_au660"]
 [ext_resource type="PackedScene" uid="uid://q0mbi02cveqg" path="res://3 GUI/Menus/play menu/play_menu.tscn" id="5_8bars"]
 
 [node name="Main Menu" type="CanvasLayer"]
 script = ExtResource("1_bk81q")
-player_scene = ExtResource("2_17uuy")
-player_card = ExtResource("3_2scwi")
-lobby_scene = ExtResource("4_47c05")
+lobby_packedscene = ExtResource("4_47c05")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

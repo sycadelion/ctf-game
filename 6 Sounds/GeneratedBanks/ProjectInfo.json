@@ -1,36 +1,29 @@
 {
  "ProjectInfo": {
   "Project": {
-   "Name": "Space FPS",
-   "GUID": "{F56696E6-764C-470D-AABF-A8930F711B98}",
+   "Name": "ctf-game",
+   "GUID": "{5FE8934B-78F7-4331-9AAC-776560322C96}",
    "Generator": "2025.1.4.9062"
   },
-  "CacheRoot": "../Wwise Project/Space FPS/.cache",
+  "CacheRoot": "../Wwise project/ctf-game/.cache",
   "Platforms": [
    {
-    "Name": "Linux",
-    "GUID": "{2D8335ED-2A70-49A9-97D4-22731C33691D}",
-    "BasePlatform": "Linux",
-    "BasePlatformGUID": "{BD0BDF13-3125-454F-8BFD-319537169F81}",
-    "Path": "Linux"
-   },
-   {
     "Name": "Windows",
-    "GUID": "{8AE54D39-E20D-4E80-AB24-3CD7C5F9231C}",
+    "GUID": "{03B1CD12-304D-49C0-A5AD-5E81B52AF0CF}",
     "BasePlatform": "Windows",
     "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
-    "Path": "Windows"
+    "Path": "windows"
    }
   ],
   "Languages": [
    {
     "Name": "English(US)",
     "Id": "684519430",
-    "GUID": "{E2B61388-7BAE-4505-8C5D-6AEEFFFC88BD}",
+    "GUID": "{D1AC6B01-FA43-440E-B956-AD70FB33D296}",
     "Default": "true",
     "UseAsStandIn": "true"
    }
   ],
-  "FileHash": "{A03EFC83-5628-2F2E-C58D-792CD628F621}"
+  "FileHash": "{DD97CB83-CE2C-E0CF-404E-80F50880B03A}"
  }
 }

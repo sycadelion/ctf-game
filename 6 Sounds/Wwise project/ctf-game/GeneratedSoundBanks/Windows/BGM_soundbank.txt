@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1799075776	bgm_event			\Default Work Unit\bgm_event	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	65707738	Go Down	.cache\57\{571F1015-2E82-6B5F-B12F-ECFB5FB2E7EB}.wem		\Containers\Default Work Unit\BGM\Go Down\Go Down		15056808
+

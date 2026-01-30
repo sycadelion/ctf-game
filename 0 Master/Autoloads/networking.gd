@@ -83,22 +83,22 @@ func get_lobby_members():
 		var member_steam_id: int = Steam.getLobbyMemberByIndex(lobby_id,member)
 		var member_steam_name: String = Steam.getFriendPersonaName(member_steam_id)
 		lobby_members.append({"steam_id": member_steam_id, "steam_name": member_steam_name})
-	print("Lobby members: ", str(lobby_members))
+	print_debug("Lobby members: ", str(lobby_members))
 
-func _on_lobby_created(connect: int, this_lobby_id: int):
-	if connect == 1:
+func _on_lobby_created(connection: int, this_lobby_id: int):
+	if connection == 1:
 		lobby_id = this_lobby_id
 		
 		Steam.setLobbyJoinable(lobby_id,true)
 		Steam.setLobbyData(lobby_id,"name","Syca's test lobby")
 		
-		var set_relay: bool = Steam.allowP2PPacketRelay(true)
+		var _set_relay: bool = Steam.allowP2PPacketRelay(true)
 		peer = SteamMultiplayerPeer.new()
 		peer.server_relay = true
 		peer.create_host()
 		
 		multiplayer.multiplayer_peer = peer
-		print("Lobby created, lobby id: ", lobby_id)
+		print_debug("Lobby created, lobby id: ", lobby_id)
 		get_lobby_members()
 		hosted.emit()
 
@@ -133,7 +133,7 @@ func send_p2p_packet(this_target: int,packet_data: Dictionary, send_type: int = 
 		Steam.sendP2PPacket(this_target,this_data,send_type,channel)
 
 func _on_p2p_session_request(remote_id: int):
-	var this_requestor: String = Steam.getFriendPersonaName(remote_id)
+	var _this_requestor: String = Steam.getFriendPersonaName(remote_id)
 	
 	Steam.acceptP2PSessionWithUser(remote_id)
 	make_p2p_handshake()
@@ -146,7 +146,7 @@ func read_p2p_packet():
 	
 	if packet_size > 0:
 		var this_packet: Dictionary = Steam.readP2PPacket(packet_size,0)
-		var packet_sender: int = this_packet['remote_steam_id']
+		var _packet_sender: int = this_packet['remote_steam_id']
 		var packet_code: PackedByteArray = this_packet['data']
 		var readable_data: Dictionary = bytes_to_var(packet_code)
 		

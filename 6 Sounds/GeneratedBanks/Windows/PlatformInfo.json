@@ -6,11 +6,11 @@
    "Generator": "2025.1.4.9062"
   },
   "RootPaths": {
-   "ProjectRoot": "../../Wwise Project/Space FPS",
-   "SourceFilesRoot": "../../Wwise Project/Space FPS/.cache",
+   "ProjectRoot": "../../Wwise project/ctf-game",
+   "SourceFilesRoot": "../../Wwise project/ctf-game/.cache",
    "SoundBanksRoot": ".",
    "ExternalSourcesInputFile": "",
-   "ExternalSourcesOutputRoot": "../../Wwise Project/Space FPS/GeneratedSoundBanks/Windows"
+   "ExternalSourcesOutputRoot": "../../Wwise project/ctf-game/GeneratedSoundBanks/Windows"
   },
   "DefaultAlign": "16",
   "Settings": {
@@ -19,9 +19,9 @@
    "SubFoldersForGeneratedFiles": "false",
    "RemoveUnusedGeneratedFiles": "true",
    "SourceControlGeneratedFiles": "true",
-   "GenerateHeaderFile": "true",
+   "GenerateHeaderFile": "false",
    "GenerateContentTxtFile": "true",
-   "GenerateMetadataXML": "false",
+   "GenerateMetadataXML": "true",
    "GenerateMetadataJSON": "true",
    "GenerateAllBanksMetadata": "false",
    "GeneratePerBankMetadata": "true",
@@ -33,6 +33,6 @@
    "PrintObjectPath": "true",
    "PrintObjectColor": "true"
   },
-  "FileHash": "{18582060-467B-987D-10A9-259E60AF4C9D}"
+  "FileHash": "{8F996C47-CF19-6C4F-D559-A0F44F54D708}"
  }
 }

@@ -23,7 +23,7 @@ func _on_join_ip_button_pressed() -> void:
 	%"Ip enter".show()
 
 
-func _on_line_edit_text_changed(new_text: String) -> void:
+func _on_line_edit_text_changed(_new_text: String) -> void:
 	pass
 	#if new_text.length() > 0:
 		#%joinButton.disabled = false

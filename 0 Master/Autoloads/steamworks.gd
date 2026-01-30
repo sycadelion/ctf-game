@@ -19,7 +19,7 @@ func initialize_steam() -> void:
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
 
-func _on_loaded_avatar(user_id: int, avatar_size: int, avatar_buffer: PackedByteArray) ->void:
+func _on_loaded_avatar(_user_id: int, avatar_size: int, avatar_buffer: PackedByteArray) ->void:
 	# create the image and texture for loading
 	var avatar_image: Image = Image.create_from_data(avatar_size,avatar_size,false,Image.FORMAT_RGBA8,avatar_buffer)
 	
@@ -28,7 +28,7 @@ func _on_loaded_avatar(user_id: int, avatar_size: int, avatar_buffer: PackedByte
 		avatar_image.resize(128,128,Image.INTERPOLATE_LANCZOS)
 	
 	# apply the image to a texture
-	var steam_avatar = ImageTexture.create_from_image(avatar_image)
+	var _steam_avatar = ImageTexture.create_from_image(avatar_image)
 
 func get_avatar_image(this_player_id: int):
 	var avatar_id = Steam.getSmallFriendAvatar(this_player_id)
