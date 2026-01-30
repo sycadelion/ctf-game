@@ -2,6 +2,7 @@ extends Node2D
 
 var spawn_points: Array = []
 @onready var players: Node2D = $Players
+@onready var timer_label: Label = $timer_label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,3 +37,11 @@ func spawn_players(id: int = 1):
 @rpc("authority","call_local")
 func toggle_camera():
 	%Camera2D.enabled = false
+
+@rpc("authority","call_local")
+func update_timer(this_time: int):
+	timer_label.text = "game starting in: " + str(this_time)
+
+@rpc("authority","call_local")
+func hide_timer():
+	timer_label.hide()

@@ -22,7 +22,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if Global.lobby.current_level:
+		if start_timer.time_left > 0:
+			Global.lobby.current_level.update_timer.rpc(start_timer.time_left)
 
 func _on_player_connected(id: int):
 	Global.lobby.clear_lobby_member_listing.rpc()
@@ -46,4 +48,5 @@ func _start_game():
 	start_timer.start()
 
 func _on_start_timer_timeout() -> void:
+	Global.lobby.current_level.hide_timer.rpc()
 	Global.lobby.spawn_players.rpc(player_ids)
