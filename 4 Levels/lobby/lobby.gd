@@ -75,6 +75,10 @@ func _update_respawntime(this_string:String):
 @rpc("authority","call_local")
 func change_level():
 	lobby_ui.hide()
+	is_ready = false
+	for id in players_ready:
+		players_ready.erase(id)
+		%member_list_container.get_node(str(id)).change_color()
 	for i in level_container.get_children():
 		level_container.remove_child(i)
 		i.queue_free()
