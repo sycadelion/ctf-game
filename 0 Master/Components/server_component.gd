@@ -1,12 +1,18 @@
 class_name server_comp extends Node
+
+signal started_game
 const BLANK_PLAYER = {"steam_name": "", "steam_id": 0}
+
 var player_ids: Array = []
+var game_started: bool = false
+@onready var start_timer: Timer = $start_timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.server_component = self
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
+	started_game.connect(_start_game)
 	if Networking.current_online_mode == Networking.online_mode.STEAM:
 		Global.lobby.spawn_lobby_member_listing.rpc(Networking.lobby_members[0],multiplayer.get_unique_id())
 	elif Networking.current_online_mode == Networking.online_mode.ENET:
@@ -34,3 +40,10 @@ func _on_player_disconnected(_id: int):
 
 func _exit_tree() -> void:
 	Global.server_component = null
+
+func _start_game():
+	print_debug("starting")
+	start_timer.start()
+
+func _on_start_timer_timeout() -> void:
+	Global.lobby.spawn_players.rpc(player_ids)

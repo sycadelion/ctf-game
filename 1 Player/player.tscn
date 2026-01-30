@@ -24,4 +24,9 @@ shape = SubResource("RectangleShape2D_tlycm")
 texture = ExtResource("2_tlycm")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_h2w6l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+enabled = false

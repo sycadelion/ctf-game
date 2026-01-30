@@ -53,6 +53,10 @@ test={
 ]
 }
 
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
 [steam]
 
 initialization/app_id=480

@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cytpx1o8jjkf5"]
+[gd_scene load_steps=7 format=3 uid="uid://cytpx1o8jjkf5"]
 
 [ext_resource type="Script" uid="uid://bfumh07ggg2nw" path="res://4 Levels/lobby/lobby.gd" id="1_blh0a"]
 [ext_resource type="PackedScene" uid="uid://d4c4t5rcpje0f" path="res://3 GUI/lobby/player_listing.tscn" id="2_d13f8"]
 [ext_resource type="PackedScene" uid="uid://rtkbreq36ec7" path="res://0 Master/Components/server_component.tscn" id="2_oy1th"]
 [ext_resource type="PackedScene" uid="uid://di3h3kyl8ha7e" path="res://4 Levels/Level_1/Level_1.tscn" id="4_q85h7"]
+[ext_resource type="PackedScene" uid="uid://b40ajquawp0uq" path="res://1 Player/player.tscn" id="4_rf8bh"]
 [ext_resource type="PackedScene" uid="uid://x1r8ecntl0ql" path="res://4 Levels/Level_2/level_2.tscn" id="5_rf8bh"]
 
 [node name="Lobby" type="Node"]
 script = ExtResource("1_blh0a")
 server_compo = ExtResource("2_oy1th")
 lobby_member_listing = ExtResource("2_d13f8")
+player_scene = ExtResource("4_rf8bh")
 levels_array = Array[PackedScene]([ExtResource("4_q85h7"), ExtResource("5_rf8bh")])
 
 [node name="Lobby_ui" type="CanvasLayer" parent="."]

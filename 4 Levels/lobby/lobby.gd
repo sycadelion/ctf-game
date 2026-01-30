@@ -4,10 +4,14 @@ signal back_to_lobby
 
 @export var server_compo: PackedScene
 @export var lobby_member_listing: PackedScene
+@export var player_scene: PackedScene
 @export var levels_array: Array[PackedScene] = []
 
 var players_ready: Array[int] = []
 var is_ready: bool = false
+var players_loaded: Array[int] = []
+var is_loaded: bool = false
+var current_level: Node = null
 
 @onready var lobby_ui: CanvasLayer = $Lobby_ui
 @onready var level_options: OptionButton = %Level_options
@@ -77,12 +81,15 @@ func change_level():
 	lobby_ui.hide()
 	is_ready = false
 	for id in players_ready:
-		players_ready.erase(id)
 		%member_list_container.get_node(str(id)).change_color()
+	players_ready.clear()
+	if multiplayer.is_server():
+		check_all_players_ready()
 	for i in level_container.get_children():
 		level_container.remove_child(i)
 		i.queue_free()
 	var this_level = levels_array[level_options.selected].instantiate()
+	current_level = this_level
 	level_container.add_child(this_level)
 
 
@@ -95,6 +102,8 @@ func _on_lobby_return_signal():
 @rpc("authority","call_local")
 func return_to_lobby():
 	lobby_ui.show()
+	current_level = null
+	players_loaded.clear()
 	for i in level_container.get_children():
 		level_container.remove_child(i)
 		i.queue_free()
@@ -129,3 +138,19 @@ func check_all_players_ready():
 		%start_Button.disabled = false
 	else:
 		%start_Button.disabled = true
+
+@rpc("authority", "call_local")
+func spawn_players(these_ids: Array):
+	for this_id in these_ids:
+		Global.lobby.current_level.spawn_players(this_id)
+
+@rpc("any_peer", "call_local")
+func set_player_loaded(id: int):
+	if not id in players_loaded:
+		players_loaded.append(id)
+		if multiplayer.is_server():
+			check_players_loaded()
+
+func check_players_loaded():
+	if players_loaded.size() == multiplayer.get_peers().size()+1:
+		Global.server_component.started_game.emit()
