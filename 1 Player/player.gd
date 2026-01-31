@@ -39,6 +39,7 @@ func _physics_process(_delta: float) -> void:
 @rpc("authority","call_local")
 func update_vars(this_steam_id: int):
 	steam_id = this_steam_id
+	$Sprite2D.texture = Steamworks.get_avatar_image(steam_id)
 
 func _exit_tree() -> void:
 	if is_multiplayer_authority():
