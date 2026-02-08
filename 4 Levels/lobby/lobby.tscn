@@ -14,7 +14,19 @@ lobby_member_listing = ExtResource("2_d13f8")
 player_scene = ExtResource("4_rf8bh")
 levels_array = Array[PackedScene]([ExtResource("4_q85h7"), ExtResource("5_rf8bh")])
 
+[node name="Level_container" type="Node" parent="."]
+
+[node name="player_container" type="Node" parent="."]
+
 [node name="Lobby_ui" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Lobby_ui"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32544088, 0.3254409, 0.32544088, 1)
 
 [node name="Title" type="Control" parent="Lobby_ui"]
 layout_mode = 3
@@ -209,7 +221,9 @@ text = "5"
 alignment = 1
 editable = false
 
-[node name="Level_container" type="Node" parent="."]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://b40ajquawp0uq")
+spawn_path = NodePath("../player_container")
 
 [connection signal="pressed" from="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/ready_button" to="." method="notify_ready"]
 [connection signal="pressed" from="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/start_Button" to="." method="_on_start_button_pressed"]

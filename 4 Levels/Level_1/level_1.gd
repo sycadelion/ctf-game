@@ -1,7 +1,6 @@
 extends Node2D
 
 var spawn_points: Array = []
-@onready var players: Node2D = $Players
 @onready var timer_label: Label = $timer_label
 
 # Called when the node enters the scene tree for the first time.
@@ -10,6 +9,7 @@ func _ready() -> void:
 		spawn_points = %Spawn_points.get_children()
 		%Button.show()
 	Global.lobby.set_player_loaded.rpc(multiplayer.get_unique_id())
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,9 +18,6 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	if multiplayer.is_server():
-		%MultiplayerSpawner.queue_free()
-		players.queue_free()
 	Global.lobby.back_to_lobby.emit()
 
 func spawn_players(id: int = 1):
@@ -29,9 +26,9 @@ func spawn_players(id: int = 1):
 	var player: Node2D = Global.lobby.player_scene.instantiate()
 	var spawn_loc = spawn_points.pick_random()
 	player.name = str(id)
-	players.call_deferred("add_child",player)
-	player.position =  spawn_loc.position
+	player.spawn_loc = spawn_loc.global_position
 	spawn_points.erase(spawn_loc)
+	Global.lobby.player_container.call_deferred("add_child",player)
 	toggle_camera.rpc()
 
 @rpc("authority","call_local")
@@ -45,3 +42,8 @@ func update_timer(this_time: int):
 @rpc("authority","call_local")
 func hide_timer():
 	timer_label.hide()
+
+
+func _on_multiplayer_spawner_despawned(this_node: Node) -> void:
+	print("testing ", get_tree().get_multiplayer().get_unique_id())
+	this_node.queue_free()

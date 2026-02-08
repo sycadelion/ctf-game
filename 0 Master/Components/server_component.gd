@@ -20,6 +20,8 @@ func _ready() -> void:
 		player_ids.append(multiplayer.get_unique_id())
 		Global.lobby.spawn_lobby_member_listing.rpc(BLANK_PLAYER,multiplayer.get_unique_id())
 
+func _input(_event: InputEvent) -> void:
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

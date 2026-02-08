@@ -20,6 +20,7 @@ var current_level: Node = null
 @onready var matchtime_edit: LineEdit = %matchtimeEdit
 @onready var respawn_edit: LineEdit = %respawnEdit
 @onready var level_container: Node = $Level_container
+@onready var player_container: Node = $player_container
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -102,11 +103,15 @@ func _on_lobby_return_signal():
 @rpc("authority","call_local")
 func return_to_lobby():
 	lobby_ui.show()
-	current_level = null
 	players_loaded.clear()
-	for i in level_container.get_children():
-		level_container.remove_child(i)
-		i.queue_free()
+	if Networking.is_host:
+		for i in player_container.get_children():
+			i.kill_sync()
+	current_level = null
+	if level_container.get_child_count() > 0:
+		for i in level_container.get_children():
+			level_container.remove_child(i)
+			i.queue_free()
 
 func notify_ready():
 	if not is_ready:

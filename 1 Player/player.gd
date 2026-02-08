@@ -3,6 +3,10 @@ extends CharacterBody2D
 const SPEED = 300.0
 
 @export var steam_id: int = 0
+@export var spawn_loc: Vector2
+
+var public_vis: bool = true
+@onready var synchronizer: MultiplayerSynchronizer = %MultiplayerSynchronizer
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -10,17 +14,22 @@ func _enter_tree() -> void:
 		steam_id = Steamworks.steam_id
 
 func _ready() -> void:
+	position = spawn_loc
 	if Networking.lobby_id > 0 and steam_id > 0:
 		update_vars.rpc(steam_id)
 		$Sprite2D.texture = Steamworks.get_avatar_image(steam_id)
 	if is_multiplayer_authority():
 			%Camera2D.enabled = true
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if !is_multiplayer_authority(): 
 		return
-	if event.is_action_pressed("test"):
-		%Camera2D.enabled = true
+
+func _process(_delta: float) -> void:
+	if !is_multiplayer_authority(): 
+		return
+	if not public_vis:
+		%MultiplayerSynchronizer.public_visibility = false
 
 func _physics_process(_delta: float) -> void:
 	if !is_multiplayer_authority(): 
@@ -41,6 +50,13 @@ func update_vars(this_steam_id: int):
 	steam_id = this_steam_id
 	$Sprite2D.texture = Steamworks.get_avatar_image(steam_id)
 
-func _exit_tree() -> void:
-	if is_multiplayer_authority():
-		%MultiplayerSynchronizer.public_visibility = false
+@rpc("any_peer","call_local")
+func kill_sync():
+	synchronizer.public_visibility = false
+	await get_tree().create_timer(0.1).timeout
+	despawn.rpc_id(1)
+
+@rpc("any_peer","call_local")
+func despawn():
+	if get_tree().get_multiplayer().get_unique_id() == 1:
+		queue_free()
