@@ -1,13 +1,5 @@
 class_name Player extends CharacterBody3D
 
-# Movement
-const MAX_VELOCITY_AIR: float = 0.6
-const MAX_VELOCITY_GROUND: float = 6.0
-const MAX_ACCELERATION: float = 10 * MAX_VELOCITY_GROUND
-const GRAVITY: float = 15.34
-const STOP_SPEED: float = 1.5
-const JUMP_IMPULSE: float = sqrt(2 * GRAVITY * 0.85)
-
 # Player State Enums
 enum Effect_state_modes {DEFAULT,CONTROLLED,PAUSED}
 enum Player_state_modes {IDLE,AIR,WALK,SPRINT,CROUCHIDLE,CROUCHMOVE,DEAD}
@@ -22,12 +14,6 @@ enum Player_Arm_State_modes {IDLE,AIR,MOVE,CROUCH,AIM,INTERRUPT}
 @export var movement_comp: MovementComp
 
 var public_vis: bool = true
-var jump_timer: float = 0
-var jump_multi: int = 1
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var direction: Vector3 = Vector3.ZERO
-var wish_jump: bool = false
-var friction: float = 8
 # Player States
 var current_player_effect_state: Effect_state_modes = Effect_state_modes.DEFAULT
 var current_player_state: Player_state_modes = Player_state_modes.IDLE

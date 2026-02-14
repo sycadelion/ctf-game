@@ -2,13 +2,6 @@ class_name PlayerCrouchMoveState extends PlayerMovementState
 
 func Enter():
 	PLAYER.anim_player.stop()
-	if PLAYER.current_player_state == PLAYER.Player_state_modes.AIR or PLAYER.current_player_state == PLAYER.Player_state_modes.CROUCHIDLE:
-		PLAYER.anim_player.play("crouch_skip")
-		if PLAYER.current_player_state != PLAYER.Player_state_modes.CROUCHIDLE:
-			PLAYER.anim_player_ui.play("Crouch_fade")
-	else:
-		PLAYER.anim_player.play("crouch_anim")
-		PLAYER.anim_player_ui.play("Crouch_fade")
 	PLAYER.current_player_state = PLAYER.Player_state_modes.CROUCHMOVE
 	PLAYER.anim_player_audio.play("WalkCrouch")
 	#PLAYER.anim_tree["parameters/FallAndFloor/transition_request"] = "Idle"
