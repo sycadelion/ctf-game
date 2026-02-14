@@ -1,13 +1,13 @@
-extends Node2D
+extends Node3D
 
 var spawn_points: Array = []
-@onready var timer_label: Label = $timer_label
+@onready var timer_label: Label = %timer_label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Networking.is_host:
-		spawn_points = %Spawn_points.get_children()
 		%Button.show()
+	spawn_points = %Spawn_points.get_children()
 	Global.lobby.set_player_loaded.rpc(multiplayer.get_unique_id())
 	
 
@@ -23,21 +23,19 @@ func _on_button_pressed() -> void:
 func spawn_players(id: int = 1):
 	if not multiplayer.is_server():
 		return
-	var player: Node2D = Global.lobby.player_scene.instantiate()
-	var spawn_loc = spawn_points.pick_random()
+	randomize()
+	var player: CharacterBody3D = Global.lobby.player_scene.instantiate()
 	player.name = str(id)
-	player.spawn_loc = spawn_loc.global_position
-	spawn_points.erase(spawn_loc)
 	Global.lobby.player_container.call_deferred("add_child",player)
 	toggle_camera.rpc()
 
 @rpc("authority","call_local")
 func toggle_camera():
-	%Camera2D.enabled = false
+	%Camera2D.current = false
 
 @rpc("authority","call_local")
 func update_timer(this_time: int):
-	timer_label.text = "game starting in: " + str(this_time)
+	timer_label.text = "Game starting in: %s" % this_time
 
 @rpc("authority","call_local")
 func hide_timer():

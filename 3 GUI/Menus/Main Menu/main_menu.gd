@@ -10,7 +10,6 @@ func _ready() -> void:
 	host_menu.back_button.pressed.connect(_menu_back)
 	Networking.hosted.connect(_on_lobby_hosted)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass

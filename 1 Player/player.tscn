@@ -1,10 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://b40ajquawp0uq"]
+[gd_scene load_steps=19 format=3 uid="uid://b40ajquawp0uq"]
 
 [ext_resource type="Script" uid="uid://cg5jhanws8y2l" path="res://1 Player/player.gd" id="1_tlycm"]
-[ext_resource type="Texture2D" uid="uid://bd370wrbfwsue" path="res://7 Assets/Icons/Missing_avatar.png" id="2_tlycm"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlycm"]
-size = Vector2(32, 32)
+[ext_resource type="Script" uid="uid://p034k6vnij5r" path="res://5 Resources/Components/MovementComp.gd" id="2_h0y4y"]
+[ext_resource type="Script" uid="uid://bvsvutyup5plf" path="res://5 Resources/Components/Health_Comp.gd" id="2_h2w6l"]
+[ext_resource type="Script" uid="uid://2oa3sy3n6e3l" path="res://5 Resources/States/StateMachine.gd" id="2_tlycm"]
+[ext_resource type="Script" uid="uid://uo6fqy4fqv3y" path="res://5 Resources/Components/AudioEntityComp.gd" id="4_2pps8"]
+[ext_resource type="Script" uid="uid://blh3ncpkmg0qo" path="res://1 Player/states/PlayerIdleState.gd" id="5_iojf8"]
+[ext_resource type="Script" uid="uid://cs85gp6v0fxxq" path="res://1 Player/states/PlayerAirState.gd" id="6_eddur"]
+[ext_resource type="Script" uid="uid://c435qwbydsc2u" path="res://1 Player/states/PlayerCrouchIdleState.gd" id="7_h0y4y"]
+[ext_resource type="Script" uid="uid://dycjy4y76gnea" path="res://1 Player/states/PlayerSprintState.gd" id="8_aahde"]
+[ext_resource type="Script" uid="uid://dly0jduywjkje" path="res://1 Player/states/PlayerWalkState.gd" id="9_uqn58"]
+[ext_resource type="Script" uid="uid://j7ypvp572m5m" path="res://1 Player/states/PlayerCrouchState.gd" id="10_eddur"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h2w6l"]
 properties/0/path = NodePath(".:position")
@@ -14,19 +20,165 @@ properties/1/path = NodePath(".:steam_id")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_43jk0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_43jk0"]
+
+[sub_resource type="Animation" id="Animation_cpa5a"]
+resource_name = "Sprint"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioEntityComp")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_sprint"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2pps8"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioEntityComp")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_walk"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_u01se"]
+resource_name = "WalkCrouch"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioEntityComp")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_walk"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkmun"]
+_data = {
+&"Sprint": SubResource("Animation_cpa5a"),
+&"Walk": SubResource("Animation_2pps8"),
+&"WalkCrouch": SubResource("Animation_u01se")
+}
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_comp", "audio_comp", "movement_comp")]
 script = ExtResource("1_tlycm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tlycm")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_tlycm")
+health_comp = NodePath("HealthComp")
+audio_comp = NodePath("AudioEntityComp")
+movement_comp = NodePath("MovementComp")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 unique_name_in_owner = true
 replication_config = SubResource("SceneReplicationConfig_h2w6l")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head"]
 unique_name_in_owner = true
-enabled = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_43jk0")
+debug_color = Color(0.87969327, 0.29237708, 0.44622493, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_43jk0")
+
+[node name="MovementComp" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("2_h0y4y")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://p034k6vnij5r"
+
+[node name="HealthComp" type="Node" parent="."]
+script = ExtResource("2_h2w6l")
+metadata/_custom_type_script = "uid://bvsvutyup5plf"
+
+[node name="AudioEntityComp" type="Node" parent="."]
+script = ExtResource("4_2pps8")
+metadata/_custom_type_script = "uid://uo6fqy4fqv3y"
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_tlycm")
+initial_state = NodePath("PlayerIdleState")
+metadata/_custom_type_script = "uid://2oa3sy3n6e3l"
+
+[node name="PlayerIdleState" type="Node" parent="StateMachine"]
+script = ExtResource("5_iojf8")
+metadata/_custom_type_script = "uid://blh3ncpkmg0qo"
+
+[node name="PlayerAirState" type="Node" parent="StateMachine"]
+script = ExtResource("6_eddur")
+metadata/_custom_type_script = "uid://cs85gp6v0fxxq"
+
+[node name="PlayerCrouchIdleState" type="Node" parent="StateMachine"]
+script = ExtResource("7_h0y4y")
+metadata/_custom_type_script = "uid://c435qwbydsc2u"
+
+[node name="PlayerSprintState" type="Node" parent="StateMachine"]
+script = ExtResource("8_aahde")
+metadata/_custom_type_script = "uid://dycjy4y76gnea"
+
+[node name="PlayerWalkState" type="Node" parent="StateMachine"]
+script = ExtResource("9_uqn58")
+metadata/_custom_type_script = "uid://dly0jduywjkje"
+
+[node name="PlayerCrouchMoveState" type="Node" parent="StateMachine"]
+script = ExtResource("10_eddur")
+metadata/_custom_type_script = "uid://j7ypvp572m5m"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationPlayer_audio" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bkmun")
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="stateLabel" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Test Text"
+vertical_alignment = 1
+
+[node name="Respawn_timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Respawn_timer" to="." method="_on_respawn_timer_timeout"]
