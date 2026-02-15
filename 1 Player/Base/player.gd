@@ -9,9 +9,13 @@ enum Player_Arm_State_modes {IDLE,AIR,MOVE,CROUCH,AIM,INTERRUPT}
 @export var spawn_loc: Vector3
 # Components
 @export_group("Components")
+@export var ears_comp: PackedScene
 @export var health_comp: HealthComp
-@export var audio_comp: AudioEntityComp
+@export var audio_comp: AudioPlayerComp
 @export var movement_comp: MovementComp
+@export_group("State Machines")
+@export var movement_state: StateMachine
+@export var skill_state: StateMachine
 
 var public_vis: bool = true
 # Player States
@@ -24,13 +28,12 @@ var mouse_sensitivity: float = 0.5
 var mouse_aim_sensitivity: float = 0.002
 var controller_sensitivity: float = 0.06
 var controller_aim_sensitivity: float = controller_sensitivity / 2
-@onready var anim_player: AnimationPlayer = $AnimationPlayer
-@onready var anim_player_audio: AnimationPlayer = $AnimationPlayer_audio
+@onready var anim_player: AnimationPlayer = $AnimationPlayer_Body
+@onready var anim_player_audio: AnimationPlayer = $AnimationPlayer_Audio
 @onready var synchronizer: MultiplayerSynchronizer = %MultiplayerSynchronizer
-@onready var player_head: Node3D = $head
+@onready var player_head: Node3D = $Head
 @onready var camera_3d: Camera3D = %Camera3D
 @onready var respawn_timer: Timer = $Respawn_timer
-@onready var state_label: Label = $PanelContainer/MarginContainer/stateLabel
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -39,11 +42,12 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	position = Global.lobby.current_level.spawn_points.pick_random().global_position
-	print_debug(str(position))
 	if Networking.lobby_id > 0 and steam_id > 0:
 		update_vars.rpc(steam_id)
 	if is_multiplayer_authority():
 		camera_3d.current = true
+		var ears_node = ears_comp.instantiate()
+		player_head.call_deferred("add_child",ears_node)
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
@@ -55,11 +59,12 @@ func _input(event: InputEvent) -> void:
 		pass
 	if event.is_action_pressed("Menu"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if event.is_action_pressed("Test"):
+		print(str(movement_state.current_state))
 
 func _process(_delta: float) -> void:
 	if !is_multiplayer_authority(): 
 		return
-	state_label.text = "State: %s" % Player_state_modes.find_key(current_player_state)
 	if not public_vis:
 		%MultiplayerSynchronizer.public_visibility = false
 
@@ -76,7 +81,6 @@ func _physics_process(delta: float) -> void:
 	if position.y <= -20 and not is_dead:
 		death()
 
-
 func is_player() -> bool:
 	return true
 
@@ -84,7 +88,6 @@ func death():
 	is_dead = true
 	self.visible = false
 	camera_3d.current = false
-	state_label.visible = false
 	position = Global.lobby.current_level.spawn_points.pick_random().global_position
 	respawn_timer.start()
 	velocity = Vector3.ZERO
@@ -133,5 +136,4 @@ func _on_respawn_timer_timeout() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	self.visible = true
 	camera_3d.current = true
-	state_label.visible = true
 	is_dead = false

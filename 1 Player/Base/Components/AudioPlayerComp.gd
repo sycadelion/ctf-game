@@ -1,4 +1,4 @@
-class_name AudioEntityComp extends Node
+class_name AudioPlayerComp extends Node
 
 signal audio_landed
 signal audio_jumped

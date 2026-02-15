@@ -1,0 +1,213 @@
+[gd_scene load_steps=30 format=3 uid="uid://b40ajquawp0uq"]
+
+[ext_resource type="Script" uid="uid://cg5jhanws8y2l" path="res://1 Player/Base/player.gd" id="1_tlycm"]
+[ext_resource type="Script" uid="uid://p034k6vnij5r" path="res://1 Player/Base/Components/MovementComp.gd" id="2_h0y4y"]
+[ext_resource type="Script" uid="uid://bvsvutyup5plf" path="res://5 Resources/Components/Health_Comp.gd" id="2_h2w6l"]
+[ext_resource type="Script" uid="uid://2oa3sy3n6e3l" path="res://5 Resources/States/StateMachine.gd" id="2_tlycm"]
+[ext_resource type="PackedScene" uid="uid://dlp84f8wnxgyp" path="res://1 Player/Base/Components/ears_comp.tscn" id="2_wdajm"]
+[ext_resource type="Script" uid="uid://uo6fqy4fqv3y" path="res://1 Player/Base/Components/AudioPlayerComp.gd" id="4_2pps8"]
+[ext_resource type="Script" uid="uid://blh3ncpkmg0qo" path="res://1 Player/Base/States/Movement/PlayerIdleState.gd" id="5_iojf8"]
+[ext_resource type="Script" uid="uid://cs85gp6v0fxxq" path="res://1 Player/Base/States/Movement/PlayerAirState.gd" id="6_eddur"]
+[ext_resource type="Script" uid="uid://c435qwbydsc2u" path="res://1 Player/Base/States/Movement/PlayerCrouchIdleState.gd" id="7_h0y4y"]
+[ext_resource type="Script" uid="uid://dycjy4y76gnea" path="res://1 Player/Base/States/Movement/PlayerSprintState.gd" id="8_aahde"]
+[ext_resource type="Script" uid="uid://dly0jduywjkje" path="res://1 Player/Base/States/Movement/PlayerWalkState.gd" id="9_uqn58"]
+[ext_resource type="Script" uid="uid://j7ypvp572m5m" path="res://1 Player/Base/States/Movement/PlayerCrouchState.gd" id="10_eddur"]
+[ext_resource type="Script" uid="uid://bpma6wwqs5w34" path="res://1 Player/Witch/States/Skills/skill_idle.gd" id="12_5hy2w"]
+[ext_resource type="Script" uid="uid://casb5gun15nrs" path="res://1 Player/Witch/States/Skills/basic_attack.gd" id="12_yyx3j"]
+[ext_resource type="Script" uid="uid://bp2j12dx3b4ao" path="res://1 Player/Witch/States/Skills/WitchSkillPrimary.gd" id="14_c4xde"]
+[ext_resource type="Script" uid="uid://h3txqs7u25a7" path="res://1 Player/Witch/States/Skills/WitchSkillSecondary.gd" id="15_wdajm"]
+[ext_resource type="Script" uid="uid://dl8h2oeupxegi" path="res://1 Player/Witch/States/Skills/WitchSkillUltimate.gd" id="16_rcnaa"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h2w6l"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:steam_id")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_43jk0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_43jk0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyx3j"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c4xde"]
+animation = &"blank"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wdajm"]
+graph_offset = Vector2(-463.60706, 66.4861)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_c4xde")
+nodes/Animation/position = Vector2(0, 180)
+node_connections = [&"output", 0, &"Animation"]
+
+[sub_resource type="Animation" id="Animation_rcnaa"]
+resource_name = "blank"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4uoqy"]
+_data = {
+&"blank": SubResource("Animation_rcnaa")
+}
+
+[sub_resource type="Animation" id="Animation_cpa5a"]
+resource_name = "Sprint"
+length = 0.5
+
+[sub_resource type="Animation" id="Animation_2pps8"]
+resource_name = "Walk"
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_u01se"]
+resource_name = "WalkCrouch"
+length = 1.2
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkmun"]
+_data = {
+&"Sprint": SubResource("Animation_cpa5a"),
+&"Walk": SubResource("Animation_2pps8"),
+&"WalkCrouch": SubResource("Animation_u01se")
+}
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_comp", "audio_comp", "movement_comp", "movement_state")]
+script = ExtResource("1_tlycm")
+ears_comp = ExtResource("2_wdajm")
+health_comp = NodePath("HealthComp")
+audio_comp = NodePath("AudioPlayerComp")
+movement_comp = NodePath("MovementComp")
+movement_state = NodePath("Movement_State")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+unique_name_in_owner = true
+replication_config = SubResource("SceneReplicationConfig_h2w6l")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+unique_name_in_owner = true
+
+[node name="Aim_RayCast" type="RayCast3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+
+[node name="Body_collision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_43jk0")
+debug_color = Color(0.87969327, 0.29237708, 0.44622493, 1)
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_43jk0")
+
+[node name="Feet_Event" type="AkEvent3D" parent="."]
+is_environment_aware = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+
+[node name="Area3D" type="Area3D" parent="Feet_Event"]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Feet_Event/Area3D"]
+shape = SubResource("BoxShape3D_yyx3j")
+debug_color = Color(0.3541735, 0.6190223, 0, 0.41960785)
+
+[node name="GroundMaterial_Raycast" type="RayCast3D" parent="Feet_Event"]
+
+[node name="Skill_event" type="AkEvent3D" parent="."]
+is_environment_aware = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57185566, 0.39590168, -0.91558075)
+
+[node name="Area3D" type="Area3D" parent="Skill_event"]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Skill_event/Area3D"]
+shape = SubResource("BoxShape3D_yyx3j")
+debug_color = Color(0.3541735, 0.6190223, 0, 0.41960785)
+
+[node name="MovementComp" type="Node" parent="." node_paths=PackedStringArray("entity")]
+script = ExtResource("2_h0y4y")
+entity = NodePath("..")
+metadata/_custom_type_script = "uid://p034k6vnij5r"
+
+[node name="HealthComp" type="Node" parent="."]
+script = ExtResource("2_h2w6l")
+metadata/_custom_type_script = "uid://bvsvutyup5plf"
+
+[node name="AudioPlayerComp" type="Node" parent="."]
+script = ExtResource("4_2pps8")
+metadata/_custom_type_script = "uid://uo6fqy4fqv3y"
+
+[node name="Movement_State" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_tlycm")
+initial_state = NodePath("PlayerIdleState")
+metadata/_custom_type_script = "uid://2oa3sy3n6e3l"
+
+[node name="PlayerIdleState" type="Node" parent="Movement_State"]
+script = ExtResource("5_iojf8")
+metadata/_custom_type_script = "uid://blh3ncpkmg0qo"
+
+[node name="PlayerAirState" type="Node" parent="Movement_State"]
+script = ExtResource("6_eddur")
+metadata/_custom_type_script = "uid://cs85gp6v0fxxq"
+
+[node name="PlayerCrouchIdleState" type="Node" parent="Movement_State"]
+script = ExtResource("7_h0y4y")
+metadata/_custom_type_script = "uid://c435qwbydsc2u"
+
+[node name="PlayerSprintState" type="Node" parent="Movement_State"]
+script = ExtResource("8_aahde")
+metadata/_custom_type_script = "uid://dycjy4y76gnea"
+
+[node name="PlayerWalkState" type="Node" parent="Movement_State"]
+script = ExtResource("9_uqn58")
+metadata/_custom_type_script = "uid://dly0jduywjkje"
+
+[node name="PlayerCrouchMoveState" type="Node" parent="Movement_State"]
+script = ExtResource("10_eddur")
+metadata/_custom_type_script = "uid://j7ypvp572m5m"
+
+[node name="Skill_State" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_tlycm")
+initial_state = NodePath("WitchSkillIdle")
+metadata/_custom_type_script = "uid://2oa3sy3n6e3l"
+
+[node name="WitchSkillIdle" type="Node" parent="Skill_State"]
+script = ExtResource("12_5hy2w")
+metadata/_custom_type_script = "uid://bpma6wwqs5w34"
+
+[node name="WitchBasicAttack" type="Node" parent="Skill_State"]
+script = ExtResource("12_yyx3j")
+metadata/_custom_type_script = "uid://casb5gun15nrs"
+
+[node name="WitchSkillPrimary" type="Node" parent="Skill_State"]
+script = ExtResource("14_c4xde")
+metadata/_custom_type_script = "uid://bp2j12dx3b4ao"
+
+[node name="WitchSkillSecondary" type="Node" parent="Skill_State"]
+script = ExtResource("15_wdajm")
+metadata/_custom_type_script = "uid://h3txqs7u25a7"
+
+[node name="WitchSkillUltimate" type="Node" parent="Skill_State"]
+script = ExtResource("16_rcnaa")
+metadata/_custom_type_script = "uid://dl8h2oeupxegi"
+
+[node name="AnimationTree_Body" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendTree_wdajm")
+anim_player = NodePath("../AnimationPlayer_Body")
+
+[node name="AnimationPlayer_Body" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4uoqy")
+}
+
+[node name="AnimationPlayer_Skill" type="AnimationPlayer" parent="."]
+
+[node name="AnimationPlayer_Audio" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bkmun")
+}
+
+[node name="Respawn_timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Respawn_timer" to="." method="_on_respawn_timer_timeout"]

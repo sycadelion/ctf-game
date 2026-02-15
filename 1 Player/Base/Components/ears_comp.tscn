@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlp84f8wnxgyp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyx3j"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Ears" type="Node3D"]
+
+[node name="AkListener3D" type="AkListener3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="AkListener3D"]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AkListener3D/Area3D"]
+shape = SubResource("BoxShape3D_yyx3j")
+debug_color = Color(0.3541735, 0.6190223, 0, 0.41960785)

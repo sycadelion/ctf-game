@@ -1,19 +1,27 @@
 class_name MovementComp extends Node
 
-# Movement
-const MAX_VELOCITY_AIR: float = 0.6
-const MAX_VELOCITY_GROUND: float = 4.0
-const MAX_ACCELERATION: float = 10 * MAX_VELOCITY_GROUND
-const MAX_ACCELERATION_AIR: float = 5 * MAX_VELOCITY_GROUND
-const MAX_ACCELERATION_SPRINT: float = MAX_ACCELERATION * 2
-const FRICTION: float = 8.0
-const FRICTION_AIR: float = 2.0
-const SPRINT_SPEED: float = 1.5
-const GRAVITY: float = 15.34
-const STOP_SPEED: float = 1.5
-const JUMP_IMPULSE: float = sqrt(4 * GRAVITY * 0.85)
+
 
 @export var entity: Node3D
+# Movement parameters
+@export_group("Parameters")
+@export var MAX_VELOCITY_AIR: float = 2.0
+@export var MAX_VELOCITY_GROUND: float = 4.0
+@export var MAX_ACCELERATION_MULTI: float = 10.0
+@export var MAX_ACCELERATION_AIR_MULTI: float = 10.0
+@export var MAX_ACCELERATION_SPRINT_MULTI: float = 2.0
+@export var FRICTION: float = 8.0
+@export var FRICTION_AIR: float = 2.1
+@export var SPRINT_SPEED: float = 1.5
+@export var GRAVITY: float = 15.34
+@export var STOP_SPEED: float = 1.5
+@export var STOP_SPEED_AIR: float = 1.2
+@export var JUMP_IMPULSE_MULTI1: float = 3.2
+@export var JUMP_IMPULSE_MULTI2: float = 0.85
+var MAX_ACCELERATION: float = MAX_ACCELERATION_MULTI * MAX_VELOCITY_GROUND
+var MAX_ACCELERATION_AIR: float = MAX_ACCELERATION_AIR_MULTI * MAX_VELOCITY_GROUND
+var MAX_ACCELERATION_SPRINT: float = MAX_ACCELERATION_SPRINT_MULTI * MAX_ACCELERATION
+var JUMP_IMPULSE: float = sqrt(JUMP_IMPULSE_MULTI1 * GRAVITY * JUMP_IMPULSE_MULTI2)
 
 var direction: Vector3 = Vector3.ZERO
 var wish_jump: bool = false
@@ -89,7 +97,7 @@ func update_velocity_air(wish_dir: Vector3,delta: float):
 	var speed = entity.velocity.length()
 	
 	if speed != 0:
-		var control = max(STOP_SPEED, speed)
+		var control = max(STOP_SPEED_AIR, speed)
 		var drop = control * FRICTION_AIR * delta
 		
 		# Scale the velocity based on FRICTION

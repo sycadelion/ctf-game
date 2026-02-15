@@ -26,6 +26,10 @@ WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
 Networking="*res://0 Master/Autoloads/networking.gd"
 Global="*res://0 Master/Autoloads/Global.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [input]
 
 Forward={

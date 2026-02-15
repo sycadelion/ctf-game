@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d4c4t5rcpje0f" path="res://3 GUI/lobby/player_listing.tscn" id="2_d13f8"]
 [ext_resource type="PackedScene" uid="uid://rtkbreq36ec7" path="res://0 Master/Components/server_component.tscn" id="2_oy1th"]
 [ext_resource type="PackedScene" uid="uid://di3h3kyl8ha7e" path="res://4 Levels/Level_1/Level_1.tscn" id="4_q85h7"]
-[ext_resource type="PackedScene" uid="uid://b40ajquawp0uq" path="res://1 Player/player.tscn" id="4_rf8bh"]
+[ext_resource type="PackedScene" uid="uid://b40ajquawp0uq" path="res://1 Player/Base/player.tscn" id="4_rf8bh"]
 [ext_resource type="PackedScene" uid="uid://x1r8ecntl0ql" path="res://4 Levels/Level_2/level_2.tscn" id="5_rf8bh"]
 
 [node name="Lobby" type="Node"]
