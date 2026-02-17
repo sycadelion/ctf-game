@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b40ajquawp0uq"]
+[gd_scene load_steps=38 format=3 uid="uid://b40ajquawp0uq"]
 
 [ext_resource type="Script" uid="uid://cg5jhanws8y2l" path="res://1 Player/Base/player.gd" id="1_tlycm"]
 [ext_resource type="Script" uid="uid://p034k6vnij5r" path="res://1 Player/Base/Components/MovementComp.gd" id="2_h0y4y"]
@@ -13,10 +13,18 @@
 [ext_resource type="Script" uid="uid://dly0jduywjkje" path="res://1 Player/Base/States/Movement/PlayerWalkState.gd" id="9_uqn58"]
 [ext_resource type="Script" uid="uid://j7ypvp572m5m" path="res://1 Player/Base/States/Movement/PlayerCrouchState.gd" id="10_eddur"]
 [ext_resource type="Script" uid="uid://bpma6wwqs5w34" path="res://1 Player/Witch/States/Skills/skill_idle.gd" id="12_5hy2w"]
-[ext_resource type="Script" uid="uid://casb5gun15nrs" path="res://1 Player/Witch/States/Skills/basic_attack.gd" id="12_yyx3j"]
+[ext_resource type="Script" uid="uid://casb5gun15nrs" path="res://1 Player/Witch/States/Skills/WitchSkillBasic.gd" id="12_yyx3j"]
 [ext_resource type="Script" uid="uid://bp2j12dx3b4ao" path="res://1 Player/Witch/States/Skills/WitchSkillPrimary.gd" id="14_c4xde"]
+[ext_resource type="Texture2D" uid="uid://ciebf72g0fii8" path="res://7 Assets/Characters/Witch/test_fireball.png" id="15_4uoqy"]
 [ext_resource type="Script" uid="uid://h3txqs7u25a7" path="res://1 Player/Witch/States/Skills/WitchSkillSecondary.gd" id="15_wdajm"]
+[ext_resource type="Texture2D" uid="uid://b3w5xvt4kmgl4" path="res://7 Assets/Input Prompts/Keyboard & Mouse/Double/mouse_left.png" id="16_mee0h"]
 [ext_resource type="Script" uid="uid://dl8h2oeupxegi" path="res://1 Player/Witch/States/Skills/WitchSkillUltimate.gd" id="16_rcnaa"]
+[ext_resource type="Texture2D" uid="uid://djrj1ra75grvw" path="res://7 Assets/Characters/Witch/test_teleport.png" id="18_lfymb"]
+[ext_resource type="Texture2D" uid="uid://dnopci6x020rh" path="res://7 Assets/Input Prompts/Keyboard & Mouse/Double/mouse_right.png" id="19_s0u8x"]
+[ext_resource type="PackedScene" uid="uid://ddtq4qd82uvbn" path="res://1 Player/Base/UX/Skill Slot.tscn" id="20_mee0h"]
+[ext_resource type="Texture2D" uid="uid://0ayolfqffqcm" path="res://7 Assets/Input Prompts/Keyboard & Mouse/Double/keyboard_q_outline.png" id="21_5a4oo"]
+[ext_resource type="Texture2D" uid="uid://c0cve1v4iyac2" path="res://7 Assets/Input Prompts/Keyboard & Mouse/Double/keyboard_e_outline.png" id="23_oudry"]
+[ext_resource type="Texture2D" uid="uid://cyt1udh5vn5mn" path="res://7 Assets/Characters/Witch/witch_crosshair.png" id="25_s0u8x"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_h2w6l"]
 properties/0/path = NodePath(".:position")
@@ -70,13 +78,14 @@ _data = {
 &"WalkCrouch": SubResource("Animation_u01se")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_comp", "audio_comp", "movement_comp", "movement_state")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("health_comp", "audio_comp", "movement_comp", "movement_state", "skill_state")]
 script = ExtResource("1_tlycm")
 ears_comp = ExtResource("2_wdajm")
 health_comp = NodePath("HealthComp")
 audio_comp = NodePath("AudioPlayerComp")
 movement_comp = NodePath("MovementComp")
 movement_state = NodePath("Movement_State")
+skill_state = NodePath("Skill_State")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 unique_name_in_owner = true
@@ -173,22 +182,64 @@ metadata/_custom_type_script = "uid://2oa3sy3n6e3l"
 
 [node name="WitchSkillIdle" type="Node" parent="Skill_State"]
 script = ExtResource("12_5hy2w")
+skill_idle = "WitchSkillIdle"
+skill_basic = "WitchSkillBasic"
+skill_primary = "WitchSkillPrimary"
+skill_secondary = "WitchSkillSecondary"
+skill_ultimate = "WitchSkillUltimate"
 metadata/_custom_type_script = "uid://bpma6wwqs5w34"
 
-[node name="WitchBasicAttack" type="Node" parent="Skill_State"]
+[node name="WitchSkillBasic" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux", "cooldown_timer")]
 script = ExtResource("12_yyx3j")
+charges = 4
+charges_max = 4
+skill_ux = NodePath("../../UX/Skills/SkillBasic")
+skill_texture = ExtResource("15_4uoqy")
+skill_input = ExtResource("16_mee0h")
+cooldown_timer = NodePath("BasicCDTimer")
+skill_idle = "WitchSkillIdle"
+skill_basic = "WitchSkillBasic"
+skill_primary = "WitchSkillPrimary"
+skill_secondary = "WitchSkillSecondary"
+skill_ultimate = "WitchSkillUltimate"
 metadata/_custom_type_script = "uid://casb5gun15nrs"
 
-[node name="WitchSkillPrimary" type="Node" parent="Skill_State"]
+[node name="BasicCDTimer" type="Timer" parent="Skill_State/WitchSkillBasic"]
+
+[node name="WitchSkillPrimary" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux")]
 script = ExtResource("14_c4xde")
+skill_ux = NodePath("../../UX/Skills/SkillPrimary")
+skill_texture = ExtResource("18_lfymb")
+skill_input = ExtResource("19_s0u8x")
+skill_idle = "WitchSkillIdle"
+skill_basic = "WitchSkillBasic"
+skill_primary = "WitchSkillPrimary"
+skill_secondary = "WitchSkillSecondary"
+skill_ultimate = "WitchSkillUltimate"
 metadata/_custom_type_script = "uid://bp2j12dx3b4ao"
 
-[node name="WitchSkillSecondary" type="Node" parent="Skill_State"]
+[node name="WitchSkillSecondary" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux")]
 script = ExtResource("15_wdajm")
+skill_ux = NodePath("../../UX/Skills/SkillSecondary")
+skill_texture = ExtResource("15_4uoqy")
+skill_input = ExtResource("21_5a4oo")
+skill_idle = "WitchSkilIdle"
+skill_basic = "WitchSkillBasic"
+skill_primary = "WitchSkillPrimary"
+skill_secondary = "WitchSkillSecondary"
+skill_ultimate = "WitchSkillUltimate"
 metadata/_custom_type_script = "uid://h3txqs7u25a7"
 
-[node name="WitchSkillUltimate" type="Node" parent="Skill_State"]
+[node name="WitchSkillUltimate" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux")]
 script = ExtResource("16_rcnaa")
+skill_ux = NodePath("../../UX/Skills/SkillUltimate")
+skill_texture = ExtResource("18_lfymb")
+skill_input = ExtResource("23_oudry")
+skill_idle = "WitchSkilIdle"
+skill_basic = "WitchSkillBasic"
+skill_primary = "WitchSkillPrimary"
+skill_secondary = "WitchSkillSecondary"
+skill_ultimate = "WitchSkillUltimate"
 metadata/_custom_type_script = "uid://dl8h2oeupxegi"
 
 [node name="AnimationTree_Body" type="AnimationTree" parent="."]
@@ -209,5 +260,85 @@ libraries = {
 
 [node name="Respawn_timer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="UX" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Skills" type="HBoxContainer" parent="UX"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -87.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 7
+
+[node name="SkillBasic" parent="UX/Skills" instance=ExtResource("20_mee0h")]
+layout_mode = 2
+
+[node name="SkillPrimary" parent="UX/Skills" instance=ExtResource("20_mee0h")]
+layout_mode = 2
+
+[node name="SkillSecondary" parent="UX/Skills" instance=ExtResource("20_mee0h")]
+layout_mode = 2
+
+[node name="SkillUltimate" parent="UX/Skills" instance=ExtResource("20_mee0h")]
+layout_mode = 2
+
+[node name="Test" type="PanelContainer" parent="UX"]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UX/Test"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="test_label" type="Label" parent="UX/Test/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Crosshair" type="Control" parent="UX"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UX/Crosshair"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_s0u8x")
+expand_mode = 2
 
 [connection signal="timeout" from="Respawn_timer" to="." method="_on_respawn_timer_timeout"]

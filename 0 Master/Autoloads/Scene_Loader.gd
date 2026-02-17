@@ -20,7 +20,7 @@ class_name SceneLoader extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#Load_Component(Wwise_comp)
+	Load_Component(Wwise_comp)
 	Change_Scene(Default_Scene)
 
 ##Load a component and add it to the component container

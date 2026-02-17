@@ -46,9 +46,10 @@ func _ready() -> void:
 		update_vars.rpc(steam_id)
 	if is_multiplayer_authority():
 		camera_3d.current = true
-		var ears_node = ears_comp.instantiate()
-		player_head.call_deferred("add_child",ears_node)
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		%UX.show()
+		player_head.call_deferred("add_child",ears_comp.instantiate())
+		if get_window().has_focus():
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
 	if !is_multiplayer_authority(): 
@@ -60,13 +61,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Menu"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event.is_action_pressed("Test"):
-		print(str(movement_state.current_state))
+		pass
 
 func _process(_delta: float) -> void:
 	if !is_multiplayer_authority(): 
 		return
 	if not public_vis:
 		%MultiplayerSynchronizer.public_visibility = false
+	%test_label.text = str(skill_state.current_state)
 
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority(): 

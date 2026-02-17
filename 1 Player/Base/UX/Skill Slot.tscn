@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddtq4qd82uvbn"]
+
+[ext_resource type="Script" uid="uid://ujja1oeyfit8" path="res://1 Player/Base/UX/skill_slot.gd" id="1_x4nn8"]
+
+[node name="SkillSlot" type="VBoxContainer"]
+offset_right = 32.0
+offset_bottom = 75.0
+theme_override_constants/separation = -1
+script = ExtResource("1_x4nn8")
+
+[node name="Charges_label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Icon" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Icon"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Skill_Icon" type="TextureRect" parent="Icon/MarginContainer"]
+layout_mode = 2
+expand_mode = 2
+
+[node name="Input_Prompt" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+expand_mode = 4

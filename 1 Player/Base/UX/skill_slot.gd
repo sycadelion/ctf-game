@@ -1,0 +1,18 @@
+class_name Skill_ux extends Control
+
+@export var charges: int = 1
+@export var icon_img: Texture
+@export var input_texture: Texture
+
+@onready var charges_label: Label = $Charges_label
+@onready var skill_icon: TextureRect = $Icon/MarginContainer/Skill_Icon
+@onready var input_prompt: TextureRect = $Input_Prompt
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	charges_label.text = str(charges)
+	skill_icon.texture = icon_img
+	input_prompt.texture = input_texture
+
+func _process(_delta: float) -> void:
+	charges_label.text = str(charges)

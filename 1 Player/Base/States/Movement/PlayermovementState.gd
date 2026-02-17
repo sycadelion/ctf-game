@@ -6,6 +6,8 @@ var HEALTH: HealthComp
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if !is_multiplayer_authority(): 
+		return
 	await owner.ready
 	PLAYER = owner as Player
 	ANIMATION = PLAYER.anim_player

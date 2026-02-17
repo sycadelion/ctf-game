@@ -3,13 +3,17 @@ class_name State extends Node
 signal Transition
 
 func Enter():
-	pass
+	if !is_multiplayer_authority(): 
+		return
 
 func Update(_delta:float):
-	pass
+	if !is_multiplayer_authority(): 
+		return
 
 func Physics_Update(_delta:float):
-	pass
+	if !is_multiplayer_authority(): 
+		return
 
 func Exit():
-	pass
+	if !is_multiplayer_authority(): 
+		return

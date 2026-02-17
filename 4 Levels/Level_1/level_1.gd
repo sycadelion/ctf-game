@@ -6,7 +6,8 @@ var spawn_points: Array = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Networking.is_host:
-		%Button.show()
+		pass
+		#%Button.show()
 	spawn_points = %Spawn_points.get_children()
 	Global.lobby.set_player_loaded.rpc(multiplayer.get_unique_id())
 	

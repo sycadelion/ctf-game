@@ -28,6 +28,8 @@ var wish_jump: bool = false
 var wish_sprint: bool = false
 
 func process_input():
+	if !is_multiplayer_authority(): 
+		return
 	direction = Vector3.ZERO
 	
 	# Movement directions
@@ -48,6 +50,8 @@ func process_input():
 		wish_sprint = false
 
 func process_movement(delta: float):
+	if !is_multiplayer_authority(): 
+		return
 	# get normalized input direction so diagonal isn't faster
 	var wish_dir: Vector3 = direction.normalized()
 	
@@ -65,6 +69,8 @@ func process_movement(delta: float):
 	entity.move_and_slide()
 
 func accelerate(wish_dir: Vector3, max_velocity: float, delta: float):
+	if !is_multiplayer_authority(): 
+		return
 	# get our current speed as a projection of velocity onto wish direction
 	var current_speed = entity.velocity.dot(wish_dir)
 	# how much we accelerate is the difference between max speed and the current speed
@@ -80,6 +86,8 @@ func accelerate(wish_dir: Vector3, max_velocity: float, delta: float):
 	return entity.velocity + add_speed * wish_dir
 
 func update_velocity_ground(wish_dir: Vector3,delta: float):
+	if !is_multiplayer_authority(): 
+		return
 	# apply FRICTION when on the ground then accelerate
 	var speed = entity.velocity.length()
 	
@@ -93,6 +101,8 @@ func update_velocity_ground(wish_dir: Vector3,delta: float):
 	return accelerate(wish_dir,MAX_VELOCITY_GROUND,delta)
 
 func update_velocity_air(wish_dir: Vector3,delta: float):
+	if !is_multiplayer_authority(): 
+		return
 	# apply FRICTION when on the ground then accelerate
 	var speed = entity.velocity.length()
 	
