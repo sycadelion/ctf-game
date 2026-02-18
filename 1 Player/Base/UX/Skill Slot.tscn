@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddtq4qd82uvbn"]
+[gd_scene load_steps=4 format=3 uid="uid://ddtq4qd82uvbn"]
 
 [ext_resource type="Script" uid="uid://ujja1oeyfit8" path="res://1 Player/Base/UX/skill_slot.gd" id="1_x4nn8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5r8je"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r8je"]
+bg_color = Color(0.106126174, 0.106126174, 0.106126174, 0.6)
 
 [node name="SkillSlot" type="VBoxContainer"]
 offset_right = 32.0
@@ -28,8 +33,18 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="Skill_Icon" type="TextureRect" parent="Icon/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 expand_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Icon/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_5r8je")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5r8je")
+fill_mode = 2
+show_percentage = false
 
 [node name="Input_Prompt" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(0, 32)

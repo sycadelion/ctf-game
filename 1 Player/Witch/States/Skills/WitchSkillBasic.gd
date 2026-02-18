@@ -6,8 +6,11 @@ func Enter():
 	if charges > 0:
 		charges -= 1
 		leave = true
-		if cooldown_timer.wait_time == cooldown and charges != charges_max:
+		if cooldown_timer.is_stopped() and charges != charges_max:
+			skill_ux.progress_bar.max_value = cooldown
 			cooldown_timer.start(cooldown)
+		else:
+			pass
 	elif  charges == 0:
 		leave = true
 
@@ -28,3 +31,4 @@ func timeout():
 			cooldown_timer.start(cooldown)
 		else:
 			cooldown_timer.stop()
+			skill_ux.progress_bar.value = 0

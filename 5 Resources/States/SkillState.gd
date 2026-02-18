@@ -31,12 +31,16 @@ func _ready() -> void:
 		cooldown_timer.timeout.connect(timeout)
 	if skill_ux:
 		skill_ux.charges = charges
+		skill_ux.charges_max = charges_max
 		skill_ux.icon_img = skill_texture
 		skill_ux.input_texture = skill_input
 
 func _process(_delta: float) -> void:
 	if skill_ux:
 		skill_ux.charges = charges
+	if cooldown_timer:
+		if not cooldown_timer.is_stopped():
+			skill_ux.progress_bar.value = cooldown_timer.time_left
 
 func _input(_event: InputEvent) -> void:
 	if !is_multiplayer_authority(): 

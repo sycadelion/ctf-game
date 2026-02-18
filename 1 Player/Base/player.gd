@@ -68,7 +68,7 @@ func _process(_delta: float) -> void:
 		return
 	if not public_vis:
 		%MultiplayerSynchronizer.public_visibility = false
-	%test_label.text = str(skill_state.current_state)
+
 
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority(): 
