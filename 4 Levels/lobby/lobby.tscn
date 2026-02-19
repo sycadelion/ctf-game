@@ -28,65 +28,48 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.32544088, 0.3254409, 0.32544088, 1)
 
-[node name="Title" type="Control" parent="Lobby_ui"]
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="Lobby_ui/Title"]
-layout_mode = 0
-offset_right = 52.0
-offset_bottom = 23.0
-text = "LOBBY"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Lobby_members" type="Control" parent="Lobby_ui"]
 layout_mode = 3
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -20.0
+offset_top = -106.0
 offset_right = 20.0
-offset_bottom = 20.0
+offset_bottom = -66.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Lobby_ui/Lobby_members"]
-custom_minimum_size = Vector2(50, 300)
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -150.0
-offset_right = 25.0
-offset_bottom = 150.0
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -213.0
+offset_right = 75.0
+offset_bottom = -3.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Lobby_ui/Lobby_members/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Lobby_ui/Lobby_members/PanelContainer/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 horizontal_scroll_mode = 0
 
-[node name="member_list_container" type="VBoxContainer" parent="Lobby_ui/Lobby_members/PanelContainer/MarginContainer/ScrollContainer"]
+[node name="member_list_container" type="HBoxContainer" parent="Lobby_ui/Lobby_members/PanelContainer/MarginContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -122,7 +105,6 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
 [node name="ready_button" type="Button" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer"]
@@ -133,29 +115,15 @@ text = "Ready"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="start_Button" type="Button" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-disabled = true
-text = "Start"
-
 [node name="Match_settings" type="Control" parent="Lobby_ui"]
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-grow_vertical = 2
+anchors_preset = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Lobby_ui/Match_settings"]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -55.5
-offset_right = 239.0
-offset_bottom = 55.5
-grow_vertical = 2
+offset_right = 159.0
+offset_bottom = 111.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Lobby_ui/Match_settings/PanelContainer"]
 layout_mode = 2
@@ -182,51 +150,33 @@ size_flags_vertical = 3
 
 [node name="VBoxContainer" type="GridContainer" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 4
 columns = 2
 
 [node name="LevelLabel" type="Label" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-text = "Level:"
+text = "Map:"
 
 [node name="Level_options" type="OptionButton" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
-selected = 0
-item_count = 2
-popup/item_0/text = "Drugland"
-popup/item_0/id = 0
-popup/item_1/text = "Canada"
-popup/item_1/id = 1
 
-[node name="match_timeLabel" type="Label" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
-layout_mode = 2
-text = "Match Time: "
-
-[node name="matchtimeEdit" type="LineEdit" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="start_Button" type="Button" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
-text = "15"
-alignment = 1
-editable = false
+disabled = true
+text = "Play"
 
-[node name="respawnLabel" type="Label" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="Control2" type="Control" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Respawn Time: "
-
-[node name="respawnEdit" type="LineEdit" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "5"
-alignment = 1
-editable = false
+size_flags_vertical = 3
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://b40ajquawp0uq")
 spawn_path = NodePath("../player_container")
 
 [connection signal="pressed" from="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/ready_button" to="." method="notify_ready"]
-[connection signal="pressed" from="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer/start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="item_selected" from="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Level_options" to="." method="_on_level_options_item_selected"]
-[connection signal="text_changed" from="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/matchtimeEdit" to="." method="_on_matchtime_edit_text_changed"]
-[connection signal="text_changed" from="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/respawnEdit" to="." method="_on_respawn_edit_text_changed"]
+[connection signal="pressed" from="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/start_Button" to="." method="_on_start_button_pressed"]

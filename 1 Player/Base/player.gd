@@ -61,7 +61,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Menu"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event.is_action_pressed("Test"):
-		pass
+		randomize()
+		$"UX/Party List".add_party_listing(Color(randf_range(0.5,1), randf_range(0.5,1), randf_range(0.5,1), randf_range(0.2,1)),  32)
+		#get_tree().get_first_node_in_group("SkillUltimate").changed_enabled(true)
 
 func _process(_delta: float) -> void:
 	if !is_multiplayer_authority(): 

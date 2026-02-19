@@ -7,6 +7,7 @@ var steam_avatars: Dictionary = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#initialize_steam()
+	Steam.setOverlayNotificationPosition(Steam.NotificationPosition.POSITION_TOP_LEFT)
 	steam_id = Steam.getSteamID()
 	steam_username = Steam.getPersonaName()
 	Steam.getPlayerAvatar(64,Steamworks.steam_id)

@@ -30,6 +30,13 @@ Global="*res://0 Master/Autoloads/Global.gd"
 
 gdscript/warnings/unused_signal=0
 
+[global_group]
+
+SkillBasic=""
+SkillPrimary=""
+SkillSecondary=""
+SkillUltimate=""
+
 [input]
 
 Forward={

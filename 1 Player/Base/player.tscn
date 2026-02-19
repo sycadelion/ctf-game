@@ -190,15 +190,14 @@ skill_secondary = "WitchSkillSecondary"
 skill_ultimate = "WitchSkillUltimate"
 metadata/_custom_type_script = "uid://bpma6wwqs5w34"
 
-[node name="WitchSkillBasic" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux", "cooldown_timer")]
+[node name="WitchSkillBasic" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux")]
 script = ExtResource("12_yyx3j")
-cooldown = 5.0
 charges = 4
 charges_max = 4
+group_name = "SkillBasic"
 skill_ux = NodePath("../../UX/Skills/SkillBasic")
 skill_texture = ExtResource("15_4uoqy")
 skill_input = ExtResource("16_mee0h")
-cooldown_timer = NodePath("BasicCDTimer")
 skill_idle = "WitchSkillIdle"
 skill_basic = "WitchSkillBasic"
 skill_primary = "WitchSkillPrimary"
@@ -206,11 +205,11 @@ skill_secondary = "WitchSkillSecondary"
 skill_ultimate = "WitchSkillUltimate"
 metadata/_custom_type_script = "uid://casb5gun15nrs"
 
-[node name="BasicCDTimer" type="Timer" parent="Skill_State/WitchSkillBasic"]
-unique_name_in_owner = true
-
 [node name="WitchSkillPrimary" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux")]
 script = ExtResource("14_c4xde")
+enabled = false
+charges = 0
+group_name = "SkillPrimary"
 skill_ux = NodePath("../../UX/Skills/SkillPrimary")
 skill_texture = ExtResource("18_lfymb")
 skill_input = ExtResource("19_s0u8x")
@@ -223,6 +222,9 @@ metadata/_custom_type_script = "uid://bp2j12dx3b4ao"
 
 [node name="WitchSkillSecondary" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux")]
 script = ExtResource("15_wdajm")
+enabled = false
+charges = 0
+group_name = "SkillSecondary"
 skill_ux = NodePath("../../UX/Skills/SkillSecondary")
 skill_texture = ExtResource("15_4uoqy")
 skill_input = ExtResource("21_5a4oo")
@@ -235,6 +237,9 @@ metadata/_custom_type_script = "uid://h3txqs7u25a7"
 
 [node name="WitchSkillUltimate" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux")]
 script = ExtResource("16_rcnaa")
+enabled = false
+charges = 0
+group_name = "SkillUltimate"
 skill_ux = NodePath("../../UX/Skills/SkillUltimate")
 skill_texture = ExtResource("18_lfymb")
 skill_input = ExtResource("23_oudry")
@@ -266,6 +271,7 @@ wait_time = 3.0
 
 [node name="UX" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="Skills" type="HBoxContainer" parent="UX"]
 anchors_preset = 3
@@ -310,9 +316,14 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="test_label" type="Label" parent="UX/Test/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UX/Test/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="test_label" type="Label" parent="UX/Test/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "test_label"
 
 [node name="Crosshair" type="Control" parent="UX"]
 layout_mode = 3

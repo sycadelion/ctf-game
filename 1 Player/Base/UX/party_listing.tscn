@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://camfgn7hwu5sr"]
+
+[ext_resource type="Texture2D" uid="uid://cshlwmcovrpnt" path="res://icon.svg" id="1_7kklf"]
+[ext_resource type="Script" uid="uid://c7yo5jpw1qfby" path="res://1 Player/Base/UX/party_listing.gd" id="1_lyu1t"]
+
+[node name="PartyListing" type="HBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+offset_right = 78.0
+offset_bottom = 64.0
+script = ExtResource("1_lyu1t")
+
+[node name="avatar_cont" type="Control" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="Player_avatar" type="TextureRect" parent="avatar_cont"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_7kklf")
+expand_mode = 1
+
+[node name="Score_Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "0"

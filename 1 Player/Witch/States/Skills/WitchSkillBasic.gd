@@ -7,10 +7,10 @@ func Enter():
 		charges -= 1
 		leave = true
 		if cooldown_timer.is_stopped() and charges != charges_max:
-			skill_ux.progress_bar.max_value = cooldown
 			cooldown_timer.start(cooldown)
 		else:
 			pass
+		skill_ux.updated_charges.emit(charges)
 	elif  charges == 0:
 		leave = true
 
@@ -23,12 +23,3 @@ func Physics_Update(_delta:float):
 
 func Exit():
 	leave = false
-
-func timeout():
-	if charges < charges_max:
-		charges += 1
-		if charges < charges_max:
-			cooldown_timer.start(cooldown)
-		else:
-			cooldown_timer.stop()
-			skill_ux.progress_bar.value = 0
