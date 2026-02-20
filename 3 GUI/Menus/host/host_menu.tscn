@@ -38,7 +38,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Server Settings"
+text = "LABELSERVERSETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -53,12 +53,12 @@ layout_mode = 2
 [node name="SteamButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Buttons vbox"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Steam Multiplayer: Enabled"
+text = "BUTTTONSTEAMMULTI"
 
 [node name="AllowedUsersButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Buttons vbox"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Allowed Users: Friends"
+text = "BUTTTONALLOWED"
 
 [node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Buttons vbox"]
 layout_mode = 2
@@ -66,11 +66,11 @@ size_flags_vertical = 3
 
 [node name="hostButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Buttons vbox"]
 layout_mode = 2
-text = "Start"
+text = "BUTTTONSTART"
 
 [node name="backButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Buttons vbox"]
 layout_mode = 2
-text = "Back"
+text = "BUTTONBACK"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Buttons vbox/SteamButton" to="." method="_on_steam_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Buttons vbox/AllowedUsersButton" to="." method="_on_allowed_users_button_pressed"]

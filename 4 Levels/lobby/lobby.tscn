@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bfumh07ggg2nw" path="res://4 Levels/lobby/lobby.gd" id="1_blh0a"]
 [ext_resource type="PackedScene" uid="uid://d4c4t5rcpje0f" path="res://3 GUI/lobby/player_listing.tscn" id="2_d13f8"]
 [ext_resource type="PackedScene" uid="uid://rtkbreq36ec7" path="res://0 Master/Components/server_component.tscn" id="2_oy1th"]
-[ext_resource type="PackedScene" uid="uid://di3h3kyl8ha7e" path="res://4 Levels/Level_1/Level_1.tscn" id="4_q85h7"]
+[ext_resource type="PackedScene" uid="uid://di3h3kyl8ha7e" path="res://4 Levels/Level_1/LEVEL1.tscn" id="4_q85h7"]
 [ext_resource type="PackedScene" uid="uid://b40ajquawp0uq" path="res://1 Player/Base/player.tscn" id="4_rf8bh"]
-[ext_resource type="PackedScene" uid="uid://x1r8ecntl0ql" path="res://4 Levels/Level_2/level_2.tscn" id="5_rf8bh"]
+[ext_resource type="PackedScene" uid="uid://x1r8ecntl0ql" path="res://4 Levels/Level_2/LEVEL2.tscn" id="5_rf8bh"]
 
 [node name="Lobby" type="Node"]
 script = ExtResource("1_blh0a")
@@ -109,11 +109,7 @@ layout_mode = 2
 
 [node name="ready_button" type="Button" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "Ready"
-
-[node name="Control" type="Control" parent="Lobby_ui/Buttons/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+text = "BUTTONREADY"
 
 [node name="Match_settings" type="Control" parent="Lobby_ui"]
 layout_mode = 3
@@ -137,7 +133,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Match Settings"
+text = "LABELMATCHSETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -155,7 +151,7 @@ columns = 2
 
 [node name="LevelLabel" type="Label" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-text = "Map:"
+text = "LABELMAP"
 
 [node name="Level_options" type="OptionButton" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
@@ -167,7 +163,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 disabled = true
-text = "Play"
+text = "BUTTONPLAY"
 
 [node name="Control2" type="Control" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2

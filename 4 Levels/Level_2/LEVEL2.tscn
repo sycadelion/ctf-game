@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr18bf34iqtc6" path="res://4 Levels/Level_2/level_2.gd" id="1_655gt"]
 
-[node name="Level2" type="Node3D"]
+[node name="LEVEL2" type="Node3D"]
 script = ExtResource("1_655gt")
 
 [node name="Button" type="Button" parent="."]

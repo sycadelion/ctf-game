@@ -140,6 +140,10 @@ Look_right={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://5 Resources/Translations/test_trans.en.translation")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

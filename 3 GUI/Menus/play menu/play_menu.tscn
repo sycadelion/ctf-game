@@ -41,7 +41,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/Main options"]
 layout_mode = 2
-text = "Play Options"
+text = "LABELPLAYOPTIONS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -55,15 +55,15 @@ layout_mode = 2
 
 [node name="joinIPButton" type="Button" parent="PanelContainer/MarginContainer/Main options/buttons"]
 layout_mode = 2
-text = "Join via IP"
+text = "BUTTONIP"
 
 [node name="joinSteamButton" type="Button" parent="PanelContainer/MarginContainer/Main options/buttons"]
 layout_mode = 2
-text = "Join via Steam"
+text = "BUTTONSTEAM"
 
 [node name="hostButton" type="Button" parent="PanelContainer/MarginContainer/Main options/buttons"]
 layout_mode = 2
-text = "Host"
+text = "BUTTONHOST"
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/Main options/buttons"]
 layout_mode = 2
@@ -72,7 +72,7 @@ size_flags_vertical = 3
 [node name="backButton" type="Button" parent="PanelContainer/MarginContainer/Main options/buttons"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Back"
+text = "BUTTONBACK"
 
 [node name="Ip enter" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
@@ -82,18 +82,18 @@ layout_mode = 2
 
 [node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/Ip enter"]
 layout_mode = 2
-placeholder_text = "IP Address"
+placeholder_text = "TEXTEDITIPADDRESS"
 alignment = 1
 caret_blink = true
 
 [node name="joinButton" type="Button" parent="PanelContainer/MarginContainer/Ip enter"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Join"
+text = "BUTTONJOIN"
 
 [node name="backButton2" type="Button" parent="PanelContainer/MarginContainer/Ip enter"]
 layout_mode = 2
-text = "Back"
+text = "BUTTONBACK"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/Main options/buttons/joinIPButton" to="." method="_on_join_ip_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/Main options/buttons/joinSteamButton" to="." method="_on_join_steam_button_pressed"]
