@@ -36,14 +36,14 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -106.0
+offset_top = -165.0
 offset_right = 20.0
-offset_bottom = -66.0
+offset_bottom = -125.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Lobby_ui/Lobby_members"]
-custom_minimum_size = Vector2(150, 50)
+custom_minimum_size = Vector2(150, 366)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -51,7 +51,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -75.0
-offset_top = -213.0
+offset_top = -384.0
 offset_right = 75.0
 offset_bottom = -3.0
 grow_horizontal = 2
@@ -59,17 +59,12 @@ grow_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Lobby_ui/Lobby_members/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Lobby_ui/Lobby_members/PanelContainer/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-horizontal_scroll_mode = 0
-
-[node name="member_list_container" type="HBoxContainer" parent="Lobby_ui/Lobby_members/PanelContainer/MarginContainer/ScrollContainer"]
+[node name="member_list_container" type="HBoxContainer" parent="Lobby_ui/Lobby_members/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 4
@@ -112,6 +107,8 @@ layout_mode = 2
 text = "BUTTONREADY"
 
 [node name="Match_settings" type="Control" parent="Lobby_ui"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 
@@ -168,6 +165,41 @@ text = "BUTTONPLAY"
 [node name="Control2" type="Control" parent="Lobby_ui/Match_settings/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Map_display" type="Control" parent="Lobby_ui"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 85.0
+offset_right = 20.0
+offset_bottom = 125.0
+grow_horizontal = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Lobby_ui/Map_display"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_right = 105.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Lobby_ui/Map_display/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Map_Label" type="Label" parent="Lobby_ui/Map_display/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://b40ajquawp0uq")

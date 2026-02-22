@@ -33,6 +33,7 @@ func _ready() -> void:
 	if Networking.is_host:
 		back_to_lobby.connect(_on_lobby_return_signal)
 		level_options.disabled = false
+		%Match_settings.show()
 		start_button.show()
 		SceneLoad.Load_Component(server_compo)
 
@@ -42,6 +43,8 @@ func spawn_lobby_member_listing(friend: Dictionary, this_id: int):
 	member_listing_scene.name = str(this_id)
 	member_listing_scene.setup_listing(friend.steam_name,friend.steam_id)
 	%member_list_container.add_child(member_listing_scene)
+	if Networking.is_host:
+		update_level_select.rpc(level_options.get_selected_id())
 
 @rpc("authority","call_local")
 func clear_lobby_member_listing():
@@ -63,6 +66,7 @@ func _on_level_options_item_selected(this_index: int) -> void:
 @rpc("authority","call_local")
 func update_level_select(this_index: int):
 	level_options.selected = this_index
+	%Map_Label.text = level_options.get_item_text(this_index)
 
 @rpc("authority","call_local")
 func change_level():
