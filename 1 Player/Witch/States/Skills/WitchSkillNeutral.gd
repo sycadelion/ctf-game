@@ -1,4 +1,4 @@
-class_name WitchSkillIdle extends SkillState
+class_name WitchSkillNeutral extends SkillState
 
 func Enter():
 	pass

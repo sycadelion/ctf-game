@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dycjy4y76gnea" path="res://1 Player/Base/States/Movement/PlayerSprintState.gd" id="8_aahde"]
 [ext_resource type="Script" uid="uid://dly0jduywjkje" path="res://1 Player/Base/States/Movement/PlayerWalkState.gd" id="9_uqn58"]
 [ext_resource type="Script" uid="uid://j7ypvp572m5m" path="res://1 Player/Base/States/Movement/PlayerCrouchState.gd" id="10_eddur"]
-[ext_resource type="Script" uid="uid://bpma6wwqs5w34" path="res://1 Player/Witch/States/Skills/skill_idle.gd" id="12_5hy2w"]
+[ext_resource type="Script" uid="uid://bpma6wwqs5w34" path="res://1 Player/Witch/States/Skills/WitchSkillNeutral.gd" id="12_5hy2w"]
 [ext_resource type="Script" uid="uid://casb5gun15nrs" path="res://1 Player/Witch/States/Skills/WitchSkillBasic.gd" id="12_yyx3j"]
 [ext_resource type="Script" uid="uid://bp2j12dx3b4ao" path="res://1 Player/Witch/States/Skills/WitchSkillPrimary.gd" id="14_c4xde"]
 [ext_resource type="Texture2D" uid="uid://ciebf72g0fii8" path="res://7 Assets/Characters/Witch/test_fireball.png" id="15_4uoqy"]
@@ -178,12 +178,12 @@ metadata/_custom_type_script = "uid://j7ypvp572m5m"
 
 [node name="Skill_State" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_tlycm")
-initial_state = NodePath("WitchSkillIdle")
+initial_state = NodePath("WitchSkillNeutral")
 metadata/_custom_type_script = "uid://2oa3sy3n6e3l"
 
-[node name="WitchSkillIdle" type="Node" parent="Skill_State"]
+[node name="WitchSkillNeutral" type="Node" parent="Skill_State"]
 script = ExtResource("12_5hy2w")
-skill_idle = "WitchSkillIdle"
+skill_neutral = "WitchSkillNeutral"
 skill_basic = "WitchSkillBasic"
 skill_primary = "WitchSkillPrimary"
 skill_secondary = "WitchSkillSecondary"
@@ -192,13 +192,14 @@ metadata/_custom_type_script = "uid://bpma6wwqs5w34"
 
 [node name="WitchSkillBasic" type="Node" parent="Skill_State" node_paths=PackedStringArray("skill_ux")]
 script = ExtResource("12_yyx3j")
+attack_speed = 0.5
 charges = 4
 charges_max = 4
 group_name = "SkillBasic"
 skill_ux = NodePath("../../UX/Skills/SkillBasic")
 skill_texture = ExtResource("15_4uoqy")
 skill_input = ExtResource("16_mee0h")
-skill_idle = "WitchSkillIdle"
+skill_neutral = "WitchSkillNeutral"
 skill_basic = "WitchSkillBasic"
 skill_primary = "WitchSkillPrimary"
 skill_secondary = "WitchSkillSecondary"
@@ -213,7 +214,7 @@ group_name = "SkillPrimary"
 skill_ux = NodePath("../../UX/Skills/SkillPrimary")
 skill_texture = ExtResource("18_lfymb")
 skill_input = ExtResource("19_s0u8x")
-skill_idle = "WitchSkillIdle"
+skill_neutral = "WitchSkillNeutral"
 skill_basic = "WitchSkillBasic"
 skill_primary = "WitchSkillPrimary"
 skill_secondary = "WitchSkillSecondary"
@@ -228,7 +229,7 @@ group_name = "SkillSecondary"
 skill_ux = NodePath("../../UX/Skills/SkillSecondary")
 skill_texture = ExtResource("15_4uoqy")
 skill_input = ExtResource("21_5a4oo")
-skill_idle = "WitchSkilIdle"
+skill_neutral = "WitchSkillNeutral"
 skill_basic = "WitchSkillBasic"
 skill_primary = "WitchSkillPrimary"
 skill_secondary = "WitchSkillSecondary"
@@ -243,7 +244,7 @@ group_name = "SkillUltimate"
 skill_ux = NodePath("../../UX/Skills/SkillUltimate")
 skill_texture = ExtResource("18_lfymb")
 skill_input = ExtResource("23_oudry")
-skill_idle = "WitchSkilIdle"
+skill_neutral = "WitchSkillNeutral"
 skill_basic = "WitchSkillBasic"
 skill_primary = "WitchSkillPrimary"
 skill_secondary = "WitchSkillSecondary"
@@ -271,7 +272,6 @@ wait_time = 3.0
 
 [node name="UX" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="Skills" type="HBoxContainer" parent="UX"]
 anchors_preset = 3
@@ -300,7 +300,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Test" type="PanelContainer" parent="UX"]
-visible = false
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
