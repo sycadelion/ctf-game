@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b40ajquawp0uq"]
+[gd_scene load_steps=40 format=3 uid="uid://b40ajquawp0uq"]
 
 [ext_resource type="Script" uid="uid://cg5jhanws8y2l" path="res://1 Player/Base/player.gd" id="1_tlycm"]
 [ext_resource type="Script" uid="uid://p034k6vnij5r" path="res://1 Player/Base/Components/MovementComp.gd" id="2_h0y4y"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://ddtq4qd82uvbn" path="res://1 Player/Base/UX/Skill Slot.tscn" id="20_mee0h"]
 [ext_resource type="Texture2D" uid="uid://0ayolfqffqcm" path="res://7 Assets/Input Prompts/Keyboard & Mouse/Double/keyboard_q_outline.png" id="21_5a4oo"]
 [ext_resource type="Texture2D" uid="uid://c0cve1v4iyac2" path="res://7 Assets/Input Prompts/Keyboard & Mouse/Double/keyboard_e_outline.png" id="23_oudry"]
+[ext_resource type="Script" uid="uid://4hyry6c2djom" path="res://1 Player/Base/ux.gd" id="24_oudry"]
 [ext_resource type="Texture2D" uid="uid://cyt1udh5vn5mn" path="res://7 Assets/Characters/Witch/witch_crosshair.png" id="25_s0u8x"]
 [ext_resource type="PackedScene" uid="uid://drymqcycrlcml" path="res://1 Player/Base/UX/party_list.tscn" id="26_5a4oo"]
 
@@ -183,6 +184,7 @@ metadata/_custom_type_script = "uid://2oa3sy3n6e3l"
 
 [node name="WitchSkillNeutral" type="Node" parent="Skill_State"]
 script = ExtResource("12_5hy2w")
+group_name = "SkillNeutral"
 skill_neutral = "WitchSkillNeutral"
 skill_basic = "WitchSkillBasic"
 skill_primary = "WitchSkillPrimary"
@@ -272,6 +274,8 @@ wait_time = 3.0
 
 [node name="UX" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
+script = ExtResource("24_oudry")
 
 [node name="Skills" type="HBoxContainer" parent="UX"]
 anchors_preset = 3
@@ -300,6 +304,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Test" type="PanelContainer" parent="UX"]
+visible = false
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -338,7 +343,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="UX/Crosshair"]
+[node name="Crosshair_texture" type="TextureRect" parent="UX/Crosshair"]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -363,5 +368,6 @@ offset_top = -175.0
 offset_right = 96.0
 offset_bottom = 0.0
 grow_vertical = 0
+player_colors = Array[Color]([Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1)])
 
 [connection signal="timeout" from="Respawn_timer" to="." method="_on_respawn_timer_timeout"]

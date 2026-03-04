@@ -20,8 +20,9 @@ func _ready() -> void:
 		player_ids.append(multiplayer.get_unique_id())
 		Global.lobby.spawn_lobby_member_listing.rpc(BLANK_PLAYER,multiplayer.get_unique_id())
 
-func _input(_event: InputEvent) -> void:
-	pass
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Test"):
+		pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -32,6 +33,8 @@ func _process(_delta: float) -> void:
 func _on_player_connected(id: int):
 	Global.lobby.clear_lobby_member_listing.rpc()
 	player_ids.append(id)
+	clientmanager.update_slot.rpc_id(id,player_ids.find(id))
+	clientmanager.update_player_count.rpc(player_ids.size())
 	if Networking.current_online_mode == Networking.online_mode.STEAM:
 		Networking.get_lobby_members()
 		for i in player_ids:

@@ -1,5 +1,7 @@
 class_name SkillState extends State
 
+enum ux_options {BASIC,PRIMARY,SECONDARY,ULITMATE}
+
 @export_group("Parameters")
 @export var enabled: bool = true
 @export var damage: int = 0
@@ -9,6 +11,7 @@ class_name SkillState extends State
 @export var charges_max: int = 1
 @export var group_name: String
 @export_group("UX Parameters")
+@export var skill_ux_: ux_options
 @export var skill_ux: Skill_ux
 @export var skill_texture: Texture
 @export var skill_input: Texture
@@ -61,7 +64,7 @@ func _check_parameters():
 	assert(charges <= charges_max,"Charges can not be greater than Charges_Max")
 	assert(cooldown > 0.0, "Cooldown can not be set to 0")
 	if group_name == "":
-		push_warning("Group name left blank on ", str(name), ", if netural state safe to ignore")
+		push_warning("Group name left blank on ", str(name))
 
 
 func cooldown_timeout():

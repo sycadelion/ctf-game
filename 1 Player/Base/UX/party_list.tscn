@@ -11,6 +11,7 @@ offset_bottom = 175.0
 theme_override_constants/separation = 3
 script = ExtResource("1_475mr")
 party_listing_scene = ExtResource("3_3o3aa")
+player_colors = Array[Color]([Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 1, 1), Color(1, 1, 0, 1), Color(0, 1, 1, 1), Color(1, 0, 1, 1), Color(1, 0.54901963, 0, 1), Color(0.5176471, 0, 1, 1)])
 client_player_avatar = ExtResource("3_ku15u")
 
 [node name="Spacer" type="Control" parent="."]

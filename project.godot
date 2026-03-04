@@ -25,6 +25,7 @@ Steamworks="*res://0 Master/Autoloads/steamworks.gd"
 WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
 Networking="*res://0 Master/Autoloads/networking.gd"
 Global="*res://0 Master/Autoloads/Global.gd"
+clientmanager="*res://0 Master/Autoloads/ClientManager.gd"
 
 [debug]
 
@@ -36,6 +37,7 @@ SkillBasic=""
 SkillPrimary=""
 SkillSecondary=""
 SkillUltimate=""
+SkillNeutral=""
 
 [input]
 

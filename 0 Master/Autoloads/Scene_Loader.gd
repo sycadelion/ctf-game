@@ -14,8 +14,6 @@ class_name SceneLoader extends Node
 ##Container Nodes
 @onready var Components: Node =  $"Component Container"
 @onready var Scenes: Node = $Scene
-@onready var player_container: Node = $"Player Container"
-@onready var effect_container: Node = $"Effect Container"
 @onready var ui_container: Node = $"UI Container"
 
 # Called when the node enters the scene tree for the first time.

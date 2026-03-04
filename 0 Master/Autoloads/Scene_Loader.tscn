@@ -13,8 +13,4 @@ Default_Scene = ExtResource("2_5fx1p")
 
 [node name="Scene" type="Node" parent="."]
 
-[node name="Player Container" type="Node" parent="."]
-
-[node name="Effect Container" type="Node" parent="."]
-
 [node name="UI Container" type="Node" parent="."]
