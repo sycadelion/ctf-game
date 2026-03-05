@@ -8,7 +8,8 @@ signal updated_score(this_score:int )
 @export var player_texture: Texture
 @export var avatar_size: int = 64
 
-var score = 0
+var player_slot: int
+var score: int = 0
 
 @onready var player_avatar: TextureRect = $avatar_cont/Player_avatar
 @onready var score_label: Label = $Score_Label

@@ -1,6 +1,7 @@
 class_name server_comp extends Node
 
 signal started_game
+signal updated_scores
 const BLANK_PLAYER = {"steam_name": "", "steam_id": 0}
 
 var player_ids: Array = []
@@ -13,6 +14,7 @@ func _ready() -> void:
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	started_game.connect(_start_game)
+	updated_scores.connect(_update_scores)
 	if Networking.current_online_mode == Networking.online_mode.STEAM:
 		player_ids.append(multiplayer.get_unique_id())
 		Global.lobby.spawn_lobby_member_listing.rpc(Networking.lobby_members[0],multiplayer.get_unique_id())
@@ -22,7 +24,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Test"):
-		pass
+		updated_scores.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -56,3 +58,6 @@ func _start_game():
 func _on_start_timer_timeout() -> void:
 	Global.lobby.current_level.hide_timer.rpc()
 	Global.lobby.spawn_players.rpc(player_ids)
+
+func _update_scores():
+	GameManager.party_list_node.update_scores.rpc(0,5)

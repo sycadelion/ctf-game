@@ -61,7 +61,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Menu"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event.is_action_pressed("Test"):
-		pass
+		get_tree().call_group("player"+str(0), "_updated_score",5)
 
 func _process(_delta: float) -> void:
 	if !is_multiplayer_authority(): 
