@@ -10,14 +10,14 @@ func _ready() -> void:
 	if !is_multiplayer_authority(): 
 		return
 	GameManager.party_list_node = self
-	client_player_listing.add_to_group("player"+str(clientmanager.client_player_slot))
-	client_player_listing.player_slot = clientmanager.client_player_slot
-	client_player_listing.player_color = player_colors[clientmanager.client_player_slot]
+	client_player_listing.add_to_group("player"+str(GameManager.client_player_slot))
+	client_player_listing.player_slot = GameManager.client_player_slot
+	client_player_listing.player_color = player_colors[GameManager.client_player_slot]
 	client_player_listing.updated_color.emit()
 	client_player_listing.player_texture = client_player_avatar
 	party_listings.append(client_player_listing)
-	for i in clientmanager.player_count:
-		if i == clientmanager.client_player_slot: continue
+	for i in GameManager.player_count:
+		if i == GameManager.client_player_slot: continue
 		add_party_listing(i)
 
 func add_party_listing(this_slot: int, this_size: int = 32):

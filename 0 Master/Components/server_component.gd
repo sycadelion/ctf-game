@@ -35,8 +35,8 @@ func _process(_delta: float) -> void:
 func _on_player_connected(id: int):
 	Global.lobby.clear_lobby_member_listing.rpc()
 	player_ids.append(id)
-	clientmanager.update_slot.rpc_id(id,player_ids.find(id))
-	clientmanager.update_player_count.rpc(player_ids.size())
+	GameManager.update_slot.rpc_id(id,player_ids.find(id))
+	GameManager.update_player_count.rpc(player_ids.size())
 	if Networking.current_online_mode == Networking.online_mode.STEAM:
 		Networking.get_lobby_members()
 		for i in player_ids:
@@ -60,4 +60,4 @@ func _on_start_timer_timeout() -> void:
 	Global.lobby.spawn_players.rpc(player_ids)
 
 func _update_scores():
-	GameManager.party_list_node.update_scores.rpc(0,5)
+	uimananger.update_scores.rpc(0,5)
