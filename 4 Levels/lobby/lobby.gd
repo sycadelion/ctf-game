@@ -91,6 +91,9 @@ func _on_start_button_pressed() -> void:
 func _on_lobby_return_signal():
 	return_to_lobby.rpc()
 
+func _exit_tree() -> void:
+	Global.lobby = null
+
 @rpc("authority","call_local")
 func return_to_lobby():
 	lobby_ui.show()
